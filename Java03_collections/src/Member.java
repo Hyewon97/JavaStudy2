@@ -1,4 +1,5 @@
 
+//VO, DTO
 public class Member {
 
 	int no = 1234;
@@ -16,4 +17,32 @@ public class Member {
 		System.out.printf("%d, %s, %s, %s\n", no, username,tel, addr);
 		
 	}
+	//getter, setter
+	public int getNo() {
+		return no;
+	}
+	public void setNo(int no) {
+		this.no = no;
+	}
+	public String getUsername() {
+		return username;
+	}
+	
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getTel() {
+		return tel;
+	}
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+	public String getAddr() {
+		return addr;
+	}
+	public void setAddr(String addr) {
+		this.addr = addr;
+	}
+	
+	
 }
