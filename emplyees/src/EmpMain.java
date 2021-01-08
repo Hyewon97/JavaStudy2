@@ -25,7 +25,7 @@ public class EmpMain {
 				if(menu.equals("5")) {//종료
 					break;
 				}else if(menu.equals("1")){//사원전체목록
-					empOutput();
+					//if문뒤에 전체목록을 뽑아주었기 때문에 코드생략
 				}else if(menu.equals("2")) {//사원등록
 					empInsert();
 				}else if(menu.equals("3")) {//사원수정
