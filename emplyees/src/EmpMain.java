@@ -17,9 +17,9 @@ public class EmpMain {
 		//아이디와 비밀번호를 입력받아 로그인 구현하기
 		Login.id = conInput("아이디");
 		Login.pwd = conInput("비밀번호");
+		System.out.println("login2===== " + Login.id + "  password2===== " + Login.pwd);
 		if (Login.LoginCheck()) { //로그인시
 			EmpDataSet.setEmpList();
-			
 			do {
 				String menu = conInput("메뉴[1. 사원전체목록, 2.사원등록, 3.사원수정, 4.사원삭제, 5.종료]");
 				if(menu.equals("5")) {//종료
