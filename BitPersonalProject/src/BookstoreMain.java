@@ -20,16 +20,10 @@ public class BookstoreMain {
 		Login.id = conInput("아이디");
 		Login.pwd = conInput("비밀번호");
 		Login.num = conInput("관리자면 1번 일반회원이면 2번을 입력하세요");
-		//System.out.println("main 정보 : login2===== " + Login.id + "  password2===== " + Login.pwd +"  num2======= " + Login.num);
-		Login.login(Login.num);
-		/*
-		Login.num = scan.nextInt();
-		System.out.println("login2===== " + Login.id + "  password2===== " + Login.pwd +"  num2=======" + Login.num);
-		*/
-		if(Login.num.equals("2")) { //일반회원로그인시
+		if(Login.login()) { //일반회원로그인시
 			BookstoreDataSet.setBookstoreList();
 			do { 
-				String menu = conInput("메뉴[1.책보기, 2.책등록 , 3.책수정, 4.책삭제, 5.회원목록 6.로그아웃]");
+				String menu = conInput("메뉴[1.책보기, 2.책등록 , 3.책수정, 4.책삭제 6.로그아웃]");
 				if(menu.equals("5")) {//로그아웃
 					break;
 				}else if(menu.equals("1")){//책전체목록
@@ -42,7 +36,7 @@ public class BookstoreMain {
 					bookstoreDel();
 				}
 			}while(true);
-		}else if(Login.num.equals("1")) { //관리자 로그인시
+		}else if(Login.login()) { //관리자 로그인시
 			BookstoreDataSet.setBookstoreList();
 			MemberDataSet.setMemberList();
 			do { 
