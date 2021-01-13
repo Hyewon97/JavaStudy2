@@ -25,7 +25,9 @@ public class BookstoreMain {
 			MemberDataSet.setMemberList();
 			BookstoreDataSet.setBookstoreList();
 			do { 
+				System.out.println("==================강산서점 회원프로그램입니다.=================");
 				String menu = conInput("메뉴[1.책목록, 2.책사기, 3.책검색, 4.잔액충전하기, 5.로그아웃]");
+				System.out.println("=========================================================");
 				if(menu.equals("5")) {//로그아웃
 					break;
 				}else if(menu.equals("1")){//책전체목록
@@ -42,8 +44,10 @@ public class BookstoreMain {
 		}else if(Login.login() && num.equals("1")) { //관리자 
 			BookstoreDataSet.setBookstoreList();
 			MemberDataSet.setMemberList();
-			do { 
+			do {
+				System.out.println("================================강산서점 관리자프로그램입니다.===================================");
 				String menu = conInput("메뉴[1.책보기, 2.책등록 , 3.책수정, 4.책삭제, 5.회원목록 6.회원등록 7.회원수정 8. 회원삭제 9.로그아웃]");
+				System.out.println("=========================================================================================");
 				if(menu.equals("9")) {//로그아웃
 					break;
 				}else if(menu.equals("1")){//책전체목록
@@ -79,28 +83,31 @@ public class BookstoreMain {
 		String bookstoreName = conInput("살 책이름");
 		MemberVO vo = MemberDataSet.MemberList.get(memberName);
 		BookstoreVO vo1 = BookstoreDataSet.BookstoreList.get(bookstoreName);
+		String name = vo.getMemberName();
+		int youcharge = vo.getCharge();
+		int total = vo.getCharge()- vo1.getBooktotal();
 
-		if(vo1==null) {
-			System.out.println("존재하는 회원이름 없습니다.");
-		}else if(vo==null){
-			System.out.println("존재하는 책이름이 없습니다.");
-		}else if(vo==null && vo1==null){
-			System.out.println("구매하신 회원님 이름은 "+ vo.getMemberName() + "이며 사기전금액은 "+ vo.getCharge() + "였고, 사고난후 금액은 " + 
-					 (vo.getCharge() - vo1.getBooktotal()) + "입니다.");
+		//System.out.println("total = "+ total);
+		if(total < 0) {
+			System.out.println("잔액이 부족합니다 충전후에 이용하세요.");
+		}else if(total > 0){
+			System.out.println("구매하신 회원님의 이름은 " + name + "이며 사기전 금액은 " + youcharge + " 였고, 사고난 후 금액은 " + total + "입니다.");
+			vo.setCharge(total);
+		}else {
+			System.out.println("이름이나 책 이름이 잘못되었습니다.");
 		}
-		
 	}
 	
 	private void bookstoreSearch() { //책검색
-        int bookstoreNo = intInput("찾고싶은 책 번호를 검색하세요");
-		BookstoreVO vo = BookstoreDataSet.BookstoreList.get(bookstoreNo);
-        switch (bookstoreNo) {
-		case 1 : vo.getBookstoreName(); break;
-		case 2 : vo.getBookstoreName(); break;
-		case 3 : vo.getBookstoreName(); break;
-		case 4 : vo.getBookstoreName(); break;
-		case 5 : vo.getBookstoreName(); break;
-		default : System.out.println("해당 번호 책은 없습닌다."); break;
+        String bookstoreName = conInput("찾고싶은 책 이름를 검색하세요");
+		BookstoreVO vo = BookstoreDataSet.BookstoreList.get(bookstoreName);
+        switch (bookstoreName) {
+		case "코딩테스트다"   : System.out.println("확인 결과= "+vo.getBookstoreName()+"는 저희서점에 있습니다."); break;
+		case "혼자하는 자바"  : System.out.println("확인 결과= "+vo.getBookstoreName()+"는 저희서점에 있습니다."); break;
+		case "생활코딩 책"   : System.out.println("확인 결과= "+vo.getBookstoreName()+"는 저희서점에 있습니다.");  break;
+		case "do it!자바!"  : System.out.println("확인 결과= "+vo.getBookstoreName()+"는 저희서점에 있습니다."); break;
+		case "자바의정석기초" : System.out.println("확인 결과= "+vo.getBookstoreName()+"는 저희서점에 있습니다."); break;
+		default : System.out.println("해당 이름의 책은 없습니다."); break;
         }	
 	}
 	private void charging() {  //잔액충전
@@ -114,7 +121,7 @@ public class BookstoreMain {
 			System.out.println("현재 " + vo.getCharge() + "원 있습니다.");
 			int charge2 = intInput("얼마를 충전하시겠습니까? ");
 			vo.setCharge(charge1+charge2);
-			System.out.println("충전된 현재 금액은 = " + vo.getCharge() + "입니다. ");
+			System.out.println("충전된 현재 금액은 = " + vo.getCharge() + "원 입니다. ");
 		}
 	}
 
@@ -235,7 +242,7 @@ public class BookstoreMain {
 	//콘솔에서 문자입력받아 리턴하는 메소드
 	public String conInput(String msg) {
 		System.out.print(msg + "=");
-		return scan.nextLine();
+		return scan.next();
 	}
 	
 	//콘솔에서 인트형 입력받아 리턴하는 메소드
