@@ -2,11 +2,11 @@ package member;
 
 public class MemberVO {
 	
-	private int memberNo;
-	private String memberName;
-	private String memberPN;
-	private String memberId;
-	private int MemberNumber;
+	private int memberNo;  //회원번호
+	private String memberName; //책이름
+	private String memberPN; //회원전화번호
+	private String memberId; //회원아이디
+	private int charge; //회원충전금액
 	
 	public int getMemberNo() {
 		return memberNo;
@@ -39,24 +39,25 @@ public class MemberVO {
 	public void setMemberId(String memberId) {
 		this.memberId = memberId;
 	}
-
-	public int getMemberNumber() {
-		return MemberNumber;
-	}
-
-	public void setMemberNumber(int memberNumber) {
-		MemberNumber = memberNumber;
-	}
 	
+	public int getCharge() {
+		return charge;
+	}
+
+	public void setCharge(int charge) {
+		this.charge = charge;
+	}
+
 	public MemberVO() {
 		
 	}
 	
-	public MemberVO(int memberNo, String memberName, String memberPN, String memberId) {
+	public MemberVO(int memberNo, String memberName, String memberPN, String memberId, int charge){
 		this.memberNo=memberNo;
 		this.memberName = memberName;
 		this.memberPN = memberPN;
 		this.memberId = memberId;
+		this.charge = charge;
 	}
 
 }
