@@ -17,18 +17,17 @@ public class BookstoreMain {
 	
 	public void start() {
 		
-			//아이디와 비밀번호를 입력받아 로그인 구현하기
+		//아이디와 비밀번호를 입력받아 로그인 구현하기
 		Login.id = conInput("아이디");
 		Login.pwd = conInput("비밀번호");
-		String pwd = conInput("비밀번호를 한번더 입력해주세요");
-		String num = conInput("관리자면 1번 일반회원이면 2번을 입력하세요");
+		Login.num = intInput("관리자면 1번 일반회원이면 2번을 입력하세요");
 		
 		//미리 데이터셋을 가져온다.
 		BookstoreDataSet.setBookstoreList();
 		MemberDataSet.setMemberList();
 		
 		while(true) {	
-			if(Login.login() && num.equals("2") && pwd.equals("123")) { //일반
+			if(Login.login() && Login.id.equals("123")) { //일반
 
 				System.out.println("==============================강산서점 회원프로그램==============================");
 				String menu = conInput("메뉴[1.책목록, 2.책사기, 3.책검색, 4.충전하기, 5.잔액확인하기 6.로그아웃 E 프로그램종료]");
@@ -53,7 +52,7 @@ public class BookstoreMain {
 				}
 				System.out.println("");
 				
-			}else if(Login.login() && num.equals("1") && pwd.equals("1234")) { //관리자 
+			}else if(Login.login()&& Login.id.equals("master")) { //관리자 
 					System.out.println("==========================================강산서점 관리자프로그램==============================================");
 					String menu = conInput("메뉴[1.책보기, 2.책등록 , 3.책수정, 4.책삭제, 5.회원목록 6.회원등록 7.회원수정 8. 회원삭제 9.로그아웃 E.프로그램종료]");
 					System.out.println("========================================================================================================");
@@ -83,7 +82,6 @@ public class BookstoreMain {
 					System.out.println("잘못 입력하셨습니다."); break;
 				}
 			}
-		System.out.println("서점프로그램 종료하겠습니다.");
 	}
 	
 	
@@ -183,7 +181,7 @@ public class BookstoreMain {
 	//책 수정
 	public void bookstoreEdit() {
 		//책 명
-		String bookstoreName = conInput("수정할 책이름");
+		String bookstoreName = conInput("책이름");
 		
 		// 해당 책의 정보가 없을때
 		BookstoreVO vo = BookstoreDataSet.BookstoreList.get(bookstoreName);
@@ -191,16 +189,13 @@ public class BookstoreMain {
 			System.out.println("존재하지 않는 책입니다.");
 		}else {//해당 책의 정보가 있을때
 			//책 이름, 저자, 판매수, 출판사
-			String subMenu = conInput("수정할 필드 선택[1.책저자, 2.출판사, 3.책이름]");
+			String subMenu = conInput("수정할 필드 선택[1.책저자, 2.출판사]");
 			if(subMenu.equals("1")) {
 				String writer = conInput("수정할 책저자");
 				vo.setBookstoreWriter(writer);
 			}else if(subMenu.equals("2")) {
 				String publish = conInput("수정할 출판사");
 				vo.setBookstorePublish(publish);
-			}else if(subMenu.equals("3")) {
-				String Name = conInput("수정할 책이름");
-				vo.setBookstoreName(Name);
 			}
 		}
 	}
@@ -248,23 +243,20 @@ public class BookstoreMain {
 	//회원 수정
 	public void memberEdit() {
 		//회원명
-		String memberName = conInput("수정할 회원명");
+		String memberName = conInput("회원명");
 		MemberVO vo = MemberDataSet.MemberList.get(memberName);
 		if(vo==null) {// 해당 회원의 정보가 없을때
 			System.out.println("존재하지않는 회원입니다.");
 		}else {//해당 회원의 정보가 있을때
 			//회원 번호, 이름, 전화번호, 아이디
-			String subMenu = conInput("수정할 필드 선택[1.회원이름, 2.회원전화번호, 3.회원아이디]");
+			String subMenu = conInput("수정할 필드 선택[1.회원전화번호, 2.회원아이디, 3.충전금액]");
 			if(subMenu.equals("1")) {
-				String name = conInput("수정할 회원이름");
-				vo.setMemberName(name);
-			}else if(subMenu.equals("2")) {
 				String Pn = conInput("수정할 회원전화번호");
 				vo.setMemberPN(Pn);
-			}else if(subMenu.equals("3")) {
+			}else if(subMenu.equals("2")) {
 				String Id = conInput("수정할 회원아이디");
 				vo.setMemberId(Id);
-			}else if(subMenu.equals("4")) {
+			}else if(subMenu.equals("3")) {
 				int charge = intInput("수정할 충전금액");
 				vo.setCharge(charge);
 			}
