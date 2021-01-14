@@ -5,7 +5,6 @@ public class BookstoreVO {
 	private int bookstoreNo; //책번호
 	private String bookstoreName; //책이름
 	private String bookstoreWriter; //책저자
-	private String bookstoreSell; //판매수
 	private String bookstorePublish; //출판사
 	private int booktotal;	//책가격
 	private int stock; 		//재고 
@@ -28,12 +27,7 @@ public class BookstoreVO {
 	public void setBookstoreWriter(String bookstoreWriter) {
 		this.bookstoreWriter = bookstoreWriter;
 	}
-	public String getBookstoreSell() {
-		return bookstoreSell;
-	}
-	public void setBookstoreSell(String bookstoreSell) {
-		this.bookstoreSell = bookstoreSell;
-	}
+
 	public String getBookstorePublish() {
 		return bookstorePublish;
 	}
@@ -57,11 +51,10 @@ public class BookstoreVO {
 		
 	}
 	
-	public BookstoreVO(int bookstoreNo, String bookstoreName, String bookstoreWriter, String bookstoreSell, String bookstorePublish, int booktotal, int stock) {
+	public BookstoreVO(int bookstoreNo, String bookstoreName, String bookstoreWriter, String bookstorePublish, int booktotal, int stock) {
 		this.bookstoreNo=bookstoreNo;
 		this.bookstoreName= bookstoreName;
 		this.bookstoreWriter = bookstoreWriter;
-		this.bookstoreSell = bookstoreSell;
 		this.bookstorePublish = bookstorePublish;
 		this.booktotal = booktotal;
 		this.stock = stock;
