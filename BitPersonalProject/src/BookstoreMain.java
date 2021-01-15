@@ -27,25 +27,25 @@ public class BookstoreMain {
 		MemberDataSet.setMemberList();
 		
 		while(true) {	
-			if(Login.login() && Login.id.equals("123")) { //일반
+			if(Login.login() && Login.id.equals("user")) { //일반
 
 				System.out.println("==============================강산서점 회원프로그램==============================");
-				String menu = conInput("메뉴[1.책목록, 2.책사기, 3.책검색, 4.충전하기, 5.잔액확인하기 6.로그아웃 E 프로그램종료]");
+				String menu = conInput("메뉴[1.책목록, 2.책검색, 3.잔액확인, 4.책사기, 5.충전, 6.로그아웃 E 프로그램종료]");
 				System.out.println("==========================================================================");
 				if(menu.equals("E")) {//로그아웃
 					break;
 				}else if(menu.equals("1")){//책전체목록
 					bookstoreOutput();
-				}else if(menu.equals("2")) {//책사기
+				}else if(menu.equals("4")) {//책사기
 					try{bookstoreBuy();
 						}catch(NullPointerException null32) {
 							System.out.println("이름이나 책이름이 잘못되었습니다.");
 						}
-				}else if(menu.equals("3")) {//책검색
+				}else if(menu.equals("2")) {//책검색
 					bookstoreSearch();
-				}else if(menu.equals("4")) {//충전하기
+				}else if(menu.equals("5")) {//충전하기
 					charging();
-				}else if(menu.equals("5")) {//잔액확인하기
+				}else if(menu.equals("3")) {//잔액확인하기
 					charge();
 				}else if(menu.equals("6")) {//로그아웃
 					start();
@@ -88,6 +88,7 @@ public class BookstoreMain {
 
 
 //----------------------------------------------회원기능영역-----------------------------------------
+	int totaal = 0;
 	
 	public void bookstoreBuy(){ //책사기
 		String memberName = conInput("회원이름");
@@ -97,21 +98,24 @@ public class BookstoreMain {
 		String name = vo.getMemberName();		//vo.getMemberName에서 가져온 이름
 		int youcharge = vo.getCharge();			//현재금액
 		int total = vo.getCharge()- vo1.getBooktotal(); //현재금액-책값
-		int stock = vo1.getStock() - 1;		//재고수
-		
 		if(total < 0) {
 			System.out.println("잔액이 부족합니다 충전후에 이용하세요.");
 		}else if(total > 0){
 			System.out.println("구매하신 회원님의 이름은 " + name + "이며 사기전 금액은 " + youcharge + "원 이였고, "+ "책 가격은 "+ vo1.getBooktotal()+ "원 입니다.");
 			System.out.println("사고난 후 금액은 " + total + "원 입니다.");
-			System.out.println("해당 책의 재고는 " + stock + "개 남았습니다.");
 			vo.setCharge(total);
-			vo1.setBooktotal(stock);
-		}else if(stock == 0) {
-			System.out.println("재고가 부족하여 구매가 불가능합니다.");
+			totaal = total;
 		}else if(vo == null || vo1 == null){
 			System.out.println("이름이나 책 이름이 잘못되었습니다.");
 		}
+		/*
+		 Set<String> keyList = BookstoreDataSet.BookstoreList.keySet();
+		Iterator<String> ii = keyList.iterator();
+		while(ii.hasNext()) {
+			BookstoreVO vo = BookstoreDataSet.BookstoreList.get(ii.next());
+			System.out.printf("%d\t%s\t%s\t%s\t%s\t\n", vo.getBookstoreNo(), vo.getBookstoreName(), vo.getBookstoreWriter(), vo.getBookstorePublish(), vo.getBooktotal());
+		}
+		 */
 	}
 	
 	public void bookstoreSearch() { //책검색
@@ -130,14 +134,13 @@ public class BookstoreMain {
 		String memberName = conInput("충전할 회원이름");
 		MemberVO vo = MemberDataSet.MemberList.get(memberName);  
 		if(vo==null) {
-			//System.out.println("vo.memberName에 뭐가담겨있니? = "+ vo.getMemberName());
 			System.out.println("존재하지 않는 이름입니다.");
 		}else {//해당 회원의 정보가 있을때
-			int charge1 = vo.getCharge();
-			System.out.println("현재 " + vo.getCharge() + "원 있습니다.");
+			int charge1 = totaal;
+			System.out.println("현재 " + charge1 + "원 있습니다.");
 			int charge2 = intInput("얼마를 충전하시겠습니까? ");
 			vo.setCharge(charge1+charge2);
-			System.out.println("충전된 현재 금액은 = " + vo.getCharge() + "원 입니다. ");
+			System.out.println("현재 금액은 = " + vo.getCharge() + "원 입니다. ");
 		}
 	}
 	public void charge() { //잔액확인
@@ -158,7 +161,7 @@ public class BookstoreMain {
 		Iterator<String> ii = keyList.iterator();
 		while(ii.hasNext()) {
 			BookstoreVO vo = BookstoreDataSet.BookstoreList.get(ii.next());
-			System.out.printf("%d\t%s\t%s\t%s\t%s\t%s\t\n", vo.getBookstoreNo(), vo.getBookstoreName(), vo.getBookstoreWriter(), vo.getBookstorePublish(), vo.getBooktotal(), vo.getStock());
+			System.out.printf("%d\t%s\t%s\t%s\t%s\t\n", vo.getBookstoreNo(), vo.getBookstoreName(), vo.getBookstoreWriter(), vo.getBookstorePublish(), vo.getBooktotal());
 		}
 	}
 	
@@ -170,9 +173,8 @@ public class BookstoreMain {
 			String bookstoreWriter = conInput("책저자");
 			String bookstorePublish = conInput("출판사");
 			int booktotal = intInput("책가격");
-			int stock = intInput("재고량");
 		
-			BookstoreDataSet.BookstoreList.put(bookstoreName, new BookstoreVO(bookstoreNo, bookstoreName, bookstoreWriter, bookstorePublish, booktotal, stock));
+			BookstoreDataSet.BookstoreList.put(bookstoreName, new BookstoreVO(bookstoreNo, bookstoreName, bookstoreWriter, bookstorePublish, booktotal));
 		}catch(NumberFormatException ne) {
 			System.out.println("잘못입력하셨습니다. 다시 시도해주세요");
 		}
