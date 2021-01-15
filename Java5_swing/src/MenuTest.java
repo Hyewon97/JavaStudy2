@@ -4,12 +4,16 @@ import java.awt.GraphicsEnvironment;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -18,6 +22,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JToolBar;
 import javax.swing.KeyStroke;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class MenuTest extends JFrame implements ActionListener{
 	//--------------------------외형구현-------------------------------------------
@@ -116,7 +122,7 @@ public class MenuTest extends JFrame implements ActionListener{
 		
 		ta.setFont(fnt);
 		//
-		setSize(500,500);
+		setSize(1000,1000);
 		setVisible(true);
 		//setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -157,7 +163,9 @@ public class MenuTest extends JFrame implements ActionListener{
 		//이벤트가 발생한 객체가 어떤 클래스로 생성된 것인지 확인
 		if(eventObj instanceof JMenuItem){  //왼쪽이 객체 오른쪽에 클래스명 // 왼쪽에 있는객체가 오른쪽에있는 클래스로인해서 생성됀거니?????
 			String eventMenu = ae.getActionCommand();
-			if(eventMenu.equals("종료")) {
+			if(eventMenu.equals("열기")) {
+				 fileOpen();
+			}else if(eventMenu.equals("종료")) {
 				System.exit(0);
 			}else if(eventMenu.equals("오려두기")) {
 				setCut();
@@ -185,11 +193,50 @@ public class MenuTest extends JFrame implements ActionListener{
 				else italic =0;
 				fnt = new Font((String)fontName.getSelectedItem(), bold+italic, (Integer)fontSize.getSelectedItem());
 				ta.setFont(fnt);
+			}else if(eventObj == openBtn) {
+				fileOpen();
 			}
 		}else if(eventObj instanceof JComboBox) {
 			if(eventObj == fontSize || eventObj == fontName) {
 				fnt = new Font((String)fontName.getSelectedItem(), bold+italic, (Integer)fontSize.getSelectedItem());
 				ta.setFont(fnt);
+			}
+		}
+	}
+	public void fileOpen() { //파일열기
+		File f = new File("C://SAMPLE");
+		JFileChooser fc = new JFileChooser();//파일탐색기
+		//여러파일을 선택할수 있도록 설정
+		fc.setMultiSelectionEnabled(true);// true:다중선택 false: 단일선택
+		
+		//필터설정
+		FileFilter ff1 = new FileNameExtensionFilter("이미지", "jpg","png","bmp");
+		fc.addChoosableFileFilter(ff1);
+		
+		FileFilter ff2 = new FileNameExtensionFilter("java", "java", "JAVA", "Java");
+		fc.addChoosableFileFilter(ff2);
+		// 0:열기, 1: 취소
+		int state = fc.showOpenDialog(this); //파일탐색기열림
+		if(state ==0) {
+			try {
+					ta.setText("");//원래있는 컨텐츠 지우기
+					//File selFile = fc.getSelectedFile();
+					File selFile[] = fc.getSelectedFiles();
+					for (File s : selFile) {
+						FileReader fr = new FileReader(s);
+						BufferedReader br = new BufferedReader(fr);
+						
+						while(true) {
+							String inData = br.readLine();
+							if(inData ==null) {
+								break;
+							}
+							ta.append(inData+ "\n");
+						}	
+					}
+			}catch(Exception e) {
+				System.out.println("파일열기 오류");
+				e.printStackTrace();
 			}
 		}
 	}
