@@ -134,4 +134,7 @@ public class Calculator2 extends JPanel implements ActionListener{
 			resultTf.setText(lblstr+num);
 		}
 	}
+	public static void main(String[] args) {
+		new Calculator2();
+	}
 }

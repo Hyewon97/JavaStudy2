@@ -10,15 +10,15 @@ public class JFrameTest extends JFrame{
 	public JFrameTest() {
 		super("Swing 테스트중");
 		
-		JButton btn = new JButton("swing 버튼");
-		add(BorderLayout.NORTH, btn);
+//		JButton btn = new JButton("swing 버튼");
+//		add(BorderLayout.NORTH, btn);
 		
 		//테두리가 없는 컨테이너 : jPannel
 		JPanel pane = new JPanel();
 		//GridLayout: 바둑판식 레이아웃
 		//							  row, col hgap, vgap
 		//pane.setLayout(new GridLayout(2, 	2,  20,  20));
-		pane.setLayout(new GridLayout(0, 	2,  20,  20));
+		pane.setLayout(new GridLayout(10, 	0,  20,  20));
 		
 		JButton btn2 = new JButton("버튼2");
 		JButton btn3 = new JButton("버튼3");
