@@ -3,6 +3,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.Calendar;
@@ -13,22 +14,25 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class CalendarSwing extends JFrame implements ItemListener{
+public class CalendarSwing extends JFrame implements ItemListener, ActionListener{
 	Font fnt = new Font("굴림체", Font.BOLD, 20);
 	
 	//상단
-	JPanel selectPane = new JPanel();
-		JButton prevBtn = new JButton("◀");
-		JButton nextBtn = new JButton("▶");
-		JComboBox<Integer> yearCombo = new JComboBox<Integer>();
-		JComboBox<Integer> monthCombo = new JComboBox<Integer>();
-		JLabel yearLBl = new JLabel("년");
-		JLabel monthLBl = new JLabel("월");
+	JPanel selectPane = new JPanel(); //패널생성
+		JButton prevBtn = new JButton("◀"); //이전버튼
+		JButton nextBtn = new JButton("▶"); //다음버튼
+		JComboBox<Integer> yearCombo = new JComboBox<Integer>(); //년도 콤보박스추가
+		JComboBox<Integer> monthCombo = new JComboBox<Integer>(); //월 콤보박스 추가
+		JLabel yearLBl = new JLabel("년");  //"년"을 표시할 라벨 추가
+		JLabel monthLBl = new JLabel("월"); //"월"을 표시할 라벨추가
+		
 	//가운데
-	JPanel centerPane = new JPanel(new BorderLayout());
-		JPanel titlePane = new JPanel(new GridLayout(1, 7));
+	JPanel centerPane = new JPanel(new BorderLayout()); //가운데 패널을 생성하고 borderLayout으로 잡아준다. 
+														//borderLayout : 상하좌우 가운데로 나뉘어서 layout을 잡는것
+		JPanel titlePane = new JPanel(new GridLayout(1, 7));// 타이틀을 생성시킬 패널을 생성하고 GridLayout으로 잡아준다.
+															// GridLayout: 지정된 수의 행과 열을 생성하는 레이아웃이다 1행 7열이므로 일,월,화,수,목,금,토 가 들어가게된다.
 			String[] title = {"일", "월", "화", "수", "목", "금", "토"};
-		JPanel dayPane = new JPanel(new GridLayout(0, 7));
+		JPanel dayPane = new JPanel(new GridLayout(0, 7)); // 위와 동일하며 날짜가 나오게 된다.
 	
 	//달력관련 데이터
 	Calendar date;
@@ -64,6 +68,11 @@ public class CalendarSwing extends JFrame implements ItemListener{
 		centerPane.add(dayPane);
 		setDay();
 		
+		
+		prevBtn.addActionListener(this);
+		nextBtn.addActionListener(this);
+		
+		//년월 이벤트 다시등록
 		yearCombo.addItemListener(this);
 		monthCombo.addItemListener(this);
 		
@@ -120,12 +129,8 @@ public class CalendarSwing extends JFrame implements ItemListener{
 		}
 		monthCombo.setSelectedItem(month);
 	}
-
-	public static void main(String[] args) {
-		new CalendarSwing();
-	}
 	
-	//액션이벤트
+	//콤보박스클릭이벤트
 	public void itemStateChanged(ItemEvent e) {
 		year = (int)yearCombo.getSelectedItem();
 		month = (int)monthCombo.getSelectedItem();
@@ -135,5 +140,57 @@ public class CalendarSwing extends JFrame implements ItemListener{
 		setDay(); //날짜 처리 함수 호출
 		dayPane.setVisible(true);
 		
+	}
+	//버튼이벤트 
+	public void actionPerformed(ActionEvent ae) {
+		Object obj = ae.getSource();
+		if(obj == prevBtn) {
+			//이전월을 눌렀을때
+			prevMonth();
+			setDayReset();
+		}else if(obj == nextBtn) {
+			//다음월을 눌렀을떄
+			nextMonth();
+			setDayReset();
+		}
+	}
+	private void setDayReset() {
+		System.out.println("year == "+ year + "   month == "+ month);
+		//년월 이벤트 등록해제
+		yearCombo.removeItemListener(this);
+		monthCombo.removeItemListener(this);
+		
+		yearCombo.setSelectedItem(year); //itemEvent발생시
+		monthCombo.setSelectedItem(month);
+		
+		dayPane.setVisible(false);
+		dayPane.removeAll();
+		setDay();
+		dayPane.setVisible(true);
+		
+		yearCombo.addItemListener(this);
+		monthCombo.addItemListener(this);
+		
+	}
+	public void prevMonth() { //월
+		if(month==1) {
+			year--;
+			month=12;
+		}else {
+			month--;
+		}
+	}
+	public void nextMonth() {
+		if(month==12){
+			year++; 
+			month=1;
+		}else{
+			month++;
+		}
+	}
+	
+	//시작메소드
+	public static void main(String[] args) {
+		new CalendarSwing();
 	}
 }
