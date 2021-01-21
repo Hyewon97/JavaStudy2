@@ -20,6 +20,7 @@ public class ImageGrahics extends JFrame implements ActionListener{
 	MyCanvas mc = new MyCanvas();
 	String selBtn = ""; //현재 선택된 버튼라벨
 	Image img;
+	
 	public ImageGrahics() {
 		pane.add(btn1); pane.add(btn2);
 		pane.add(btn3); pane.add(btn4);
@@ -38,6 +39,7 @@ public class ImageGrahics extends JFrame implements ActionListener{
 		btn5.addActionListener(this);
 		btn6.addActionListener(this);
 	}
+	
 	public void actionPerformed(ActionEvent ae) {
 		selBtn = ae.getActionCommand();
 		mc.repaint();//paint()메소드 호출
@@ -57,7 +59,7 @@ public class ImageGrahics extends JFrame implements ActionListener{
 			
 			//이미지를 그림으로그리기
 			if(selBtn.equals("원본그리기")){
-					//       canvas		image
+					//       canvas			image
 				g.drawImage(img, 0,0,w,h,   0,0,w,h, this);
 			}else if(selBtn.equals("축소그리기")) {
 				g.drawImage(img, 0,0,w/2, h/2,   0,0,w,h, this);
