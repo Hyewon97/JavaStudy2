@@ -8,6 +8,7 @@ import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -23,7 +24,6 @@ import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
-import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -41,7 +41,7 @@ public class MemberMain extends JFrame implements ActionListener{
 	JPanel mainCenterPane = new JPanel(new BorderLayout());
 		//버튼들
 		JPanel buttonPane = new JPanel(new GridLayout(1,0));
-			String btnLbl[] = {"전체목록","추가","수정","삭제","지우기","종료","엑셀로쓰기","엑셀에서가져오기0"};
+			String btnLbl[] = {"전체목록","추가","수정","삭제","지우기","종료","엑셀로쓰기","엑셀에서가져오기"};
 		//JTable
 		JTable table;
 			JScrollPane sp;
@@ -144,25 +144,56 @@ public class MemberMain extends JFrame implements ActionListener{
 			setMemberExcel();
 		}
 	}
-	//엑셀에서가져오기
+	//엑셀에서 회원목록 가져오기
 	public void setMemberExcel() {
 		//파일탐색기
 		JFileChooser fc = new JFileChooser();
-		/*
-		FileInputStream fis = new FileInputStream(fc);
+		FileFilter ff= new FileNameExtensionFilter("*.xls", "xls","XLS");
+		fc.setFileFilter(ff);
 		
-		//1.POI객체를 얻어오기
-		POIFSFileSystem poi = new POIFSFileSystem(fis);
+		//0:열기 , 1: 취소
+		int state = fc.showOpenDialog(this);
 		
-		//2.workbook
-		HSSFWorkbook workbook = new HSSFWorkbook(poi);
+		if(state==0) {
+			try {
+				//선택해 놓은 파일정보
+				File selectFileName = fc.getSelectedFile();
+				FileInputStream fis = new FileInputStream(selectFileName);
+				
+				//엑셀에서 파일 사용할 수 있는 개체를 생성한다.
+				POIFSFileSystem poi = new POIFSFileSystem(fis);
+				
+				//workbook
+				HSSFWorkbook workbook= new HSSFWorkbook(poi);
+				//sheet
+				HSSFSheet sheet = workbook.getSheet("회원정보");
+				//row
+				int rowCount = sheet.getPhysicalNumberOfRows(); //행수
+				
+				List<MemberVO> lst = new ArrayList<MemberVO>();
+				
+				for(int row=1; row<rowCount; row++) {
+					//cell
+					MemberVO vo = new MemberVO();
+					
+					HSSFRow rowData = sheet.getRow(row);
+					
+					//번호
+					vo.setNum((int)rowData.getCell(0).getNumericCellValue()); //double
+					vo.setUsername(rowData.getCell(1).getStringCellValue());
+					vo.setTel(rowData.getCell(2).getStringCellValue());
+					vo.setEmail(rowData.getCell(3).getStringCellValue());
+					vo.setAddr(rowData.getCell(4).getStringCellValue());
+					vo.setWritedate(rowData.getCell(5).getStringCellValue());
+					lst.add(vo);
+				}
+				//////////
+				setNewTableList(lst);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
-		//3.sheet
-		//시트수 구하기
-		int sheetCount = workbook.getNumberOfSheets();
-		
-		HSSFSheet sheet = workbook.getSheet("회원정보");
-		*/
 	}	
 	//엑셀로 쓰기
 	public void setMemberExcelSave() {
