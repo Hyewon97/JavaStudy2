@@ -1,5 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -30,6 +31,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 
 public class MemberMain extends JFrame implements ActionListener{
+	Font fnt = new Font("궁서체", Font.BOLD, 15);
 	//JFrame - North - 회원폼
 	JPanel mainNorthPane = new JPanel(new BorderLayout());
 		JPanel formLabelPane = new JPanel(new GridLayout(6,1));
@@ -54,10 +56,10 @@ public class MemberMain extends JFrame implements ActionListener{
 	
 	public MemberMain() {
 		super("회원관리");
-		
 		add("North", mainNorthPane);
 			for(int idx=0; idx<lbl.length; idx++) { //폼의라벨
 				JLabel formLabel = new JLabel(lbl[idx]);
+				formLabel.setFont(fnt);
 				formLabelPane.add(formLabel);
 			}
 			mainNorthPane.add("West", formLabelPane);
@@ -66,16 +68,19 @@ public class MemberMain extends JFrame implements ActionListener{
 			for(int idx=0; idx<tf.length; idx++) {
 				JPanel p = new JPanel();
 				p.setLayout(new FlowLayout(FlowLayout.LEFT));
+				tf[idx].setFont(fnt);
 				p.add(tf[idx]);
 				formCenterPane.add(p);
 			}
 			
+		mainNorthPane.setFont(fnt);
 		add("Center", mainCenterPane);
 			mainNorthPane.add("Center", formCenterPane);
 			
 			//버튼
 			for(int idx=0; idx<btnLbl.length; idx++) {
 				JButton btn = new JButton(btnLbl[idx]);
+				btn.setFont(fnt);
 				buttonPane.add(btn);
 				
 				//이벤트 등록
@@ -87,8 +92,10 @@ public class MemberMain extends JFrame implements ActionListener{
 			model = new DefaultTableModel(lbl, 0);
 			table = new JTable(model);
 			sp = new JScrollPane(table);
+			sp.setFont(fnt);
 			mainCenterPane.add("Center", sp);
-			
+		
+		searchPane.setFont(fnt);
 		//검색
 		add("South", searchPane);
 			searchPane.add(searchTf);
