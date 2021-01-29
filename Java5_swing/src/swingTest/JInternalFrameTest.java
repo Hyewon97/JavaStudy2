@@ -100,7 +100,7 @@ public class JInternalFrameTest extends JFrame implements ActionListener, Change
 		if4.setVisible(true);
 		dp.add(if4);
 		
-		setSize(1000, 800);
+		setSize(800, 1000);
 		setVisible(true);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		
