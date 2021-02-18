@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>표만들기</title>
+</head>
+<body>
+<pre>
+	<h1>표 만들기</h1>
+	table: 표
+	tr: 1줄 생성
+	td: 1칸생성
+	속성: width, height : px, %
+	th: 강조하고싶은 줄에 td대신에 th (글자가 칸의 가운데정렬, 글자가 진하게)
+	열단위로 처리
+	colgroup
+	col
+	
+	표제목 caption
+	표의상단 thead
+	효의중단 tbody
+	표의하단 tfoot
+</pre>
+
+<table border=1 width="100%" style="color:green">
+	<!-- 위치가 어디있든 caption의 위치는 똑같다 -->
+	<caption>표의제목</caption>
+	<colgroup>
+		<col spane="2" style="background-image:url(../img/1.PNG)"/>
+		<col style="background-color: yellow">
+	</colgroup>
+	<thead>
+		<tr height="500" style="color:blue">
+			<th>첫번쨰칸1111111</th>
+			<td style="background-color:#ff0000">두번쨰칸 #ff0000=red</td>
+			<th>두번쨰칸</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>두번째줄 첫번째칸</td>
+			<td><img src="../img/1.PNG" width="100"></td>
+			<td>두번쨰줄 1번쨰 칸</td>
+		</tr>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td>두번째줄 첫번째칸</td>
+			<td><img src="../img/1.PNG" width="100"></td>
+			<td>두번쨰줄 1번쨰 칸</td>
+		</tr>
+	</tfoot>
+</table>
+</body>
+</html>

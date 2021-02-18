@@ -57,7 +57,7 @@ public class JTabbedPaneTest extends JFrame{
 			
 		}
 		//중간에 tabMenu 추가하기/////////////////////////
-		tp.insertTab("버튼추가해보기", ii2, new JButton("버튼"), "테스트중", 2);
+		//tp.insertTab("버튼추가해보기", ii2, new JButton("버튼"), "테스트중", 2);
 		
 		//활성화 비활성화 하기
 		//true: 활성화. false :비활성화(1번쨰 탭을 제외한 나머지탭은 모두 비활성화)
@@ -65,13 +65,13 @@ public class JTabbedPaneTest extends JFrame{
 		
 		
 		//부분활성화 부분비활성화하기
-		tp.setEnabledAt(2, false);
+		//tp.setEnabledAt(2, false);
 		
 		//탭메뉴삭제
 		//tp.removeTabAt(3);
 		
 		//탭메뉴 위치이동
-		tp.setTabPlacement(JTabbedPane.LEFT);
+		//tp.setTabPlacement(JTabbedPane.LEFT);
 	}
 
 	public static void main(String[] args) {

@@ -10,6 +10,7 @@ public class MemberDAO extends DBConn{
 	
 	//레코드 전체선택
 	public List<MemberVO> memberAllSelect() {
+		System.out.println("DAO까지는 오는지 확인");
 		//선택한 레코드를 보관할 컬렉션
 		List<MemberVO> lst= new ArrayList<MemberVO>();
 		try {
@@ -18,13 +19,15 @@ public class MemberDAO extends DBConn{
 				  " from member order by num asc";
 			
 			pstmt = conn.prepareStatement(sql);
+			System.out.println("pstmt = " + pstmt.toString());
+			System.out.println("pstmt = " + pstmt.executeQuery());
 			rs = pstmt.executeQuery();
+			System.out.println("rs = "+ rs.next());
 			while(rs.next()) {
 				//레코드를 VO에 담고 VO를 List에 담고
 				MemberVO vo = new MemberVO(rs.getInt(1), rs.getString(2), rs.getString(3)
 						, rs.getString(4), rs.getString(5), rs.getString(6));
 				lst.add(vo);
-				
 			}
 		}catch(Exception e) {
 			e.printStackTrace();

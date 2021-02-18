@@ -21,7 +21,7 @@ public class EmpMain {
 		if (Login.LoginCheck()) { //로그인시
 			EmpDataSet.setEmpList();
 			do {
-				String menu = conInput("메뉴[1. 사원전체목록, 2.사원등록, 3.사원수정, 4.사원삭제, 5.종료]");
+				String menu = conInput("메뉴[1. 사원전체목록, 2.사원등록, 3.사원수정, 4.사원삭제, 5.종료 6.검색]");
 				if(menu.equals("5")) {//종료
 					break;
 				}else if(menu.equals("1")){//사원전체목록
@@ -32,15 +32,30 @@ public class EmpMain {
 					empEdit();
 				}else if(menu.equals("4")) {//사원삭제
 					empDel();
+				}else if(menu.equals("6")) {//사원삭제
+					empSearch();
+				}while(true);
 				}
-				empOutput();
-			}while(true);
-			
 		}else { //로그인 실패시 
 			System.out.println("로그인이 실패하였습니다.");
 		}
 	}
+
 	
+	//검색
+	public void empSearch() {
+		String search = conInput("검색할 전화번호 입력");
+		//키목록구하기
+		Set<String> keySet = EmpDataSet.empList.keySet();
+		Iterator i = keySet.iterator();
+		while(i.hasNext()) {
+			String key = (String)i.next();
+			EmpVO vo = EmpDataSet.empList.get(key);
+			if(vo.getTel().indexOf(search)>=0) {
+				System.out.printf("%d\t%s\t%s\t%s\t%s\n", vo.getEmpNo(), vo.getEmpName(), vo.getTel(), vo.getDepart(), vo.getPosition());
+			}
+		}
+	}
 	//사원전체목록 출력
 	public void empOutput() {
 		Set<String> keyList = EmpDataSet.empList.keySet();

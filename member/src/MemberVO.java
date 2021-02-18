@@ -13,6 +13,7 @@ public class MemberVO {
 	}
 	
 	public MemberVO(String username, String tel, String email, String addr) {
+		System.out.println("this =" + this);
 		this.username = username;
 		this.tel = tel;
 		this.email = email;
@@ -20,7 +21,6 @@ public class MemberVO {
 	}
 
 	public MemberVO(int num, String username, String tel, String email, String addr, String writedate) {
-		this(username, tel, email, addr);
 		this.num = num;
 		this.writedate = writedate;
 	}

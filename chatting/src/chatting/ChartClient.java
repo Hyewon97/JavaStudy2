@@ -22,6 +22,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
+import javax.swing.border.TitledBorder;
 
 public class ChartClient extends JFrame implements ActionListener, Runnable{
 	/////패널만들기///////////////////////////////////////////
@@ -35,7 +37,6 @@ public class ChartClient extends JFrame implements ActionListener, Runnable{
 		JPanel sendPane = new JPanel(new BorderLayout());
 			JTextField sendTf = new JTextField();
 			JButton sendBtn = new JButton("보내기");
-	
 	//JFrame-East
 	JPanel eastPane = new JPanel(new BorderLayout());
 		JLabel ListTiltle = new JLabel("		접속자리스트		");
@@ -60,7 +61,13 @@ public class ChartClient extends JFrame implements ActionListener, Runnable{
 			centerPane.add("South", sendPane);
 				sendPane.add(sendTf);
 				sendPane.add("East", sendBtn);
-			
+		/////////Border////////////////
+		LineBorder lineBorder = new LineBorder(Color.GREEN);
+		//                                                    제목			좌우						위아래인데 위에
+		TitledBorder tBorder = new TitledBorder(lineBorder, "Message", TitledBorder.CENTER, TitledBorder.ABOVE_TOP);
+		
+		centerPane.setBorder(tBorder);
+		////////////////////////////	
 		//JFrame - East
 		add("East", eastPane);
 			eastPane.add("North",ListTiltle);

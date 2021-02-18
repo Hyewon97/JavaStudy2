@@ -49,7 +49,8 @@ public class ImageGrahics extends JFrame implements ActionListener{
 		int w,h;
 		
 		public MyCanvas() {
-			img = Toolkit.getDefaultToolkit().getImage("img/img.png");
+			//img = Toolkit.getDefaultToolkit().getImage("img/img.png");
+			img = Toolkit.getDefaultToolkit().getImage("img/searchback.gif");
 		}
 		public void paint(Graphics g) {
 			//이미지의 폭과 높이를 구한다.

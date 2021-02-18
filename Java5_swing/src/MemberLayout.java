@@ -111,7 +111,7 @@ public class MemberLayout extends JFrame{
 	}
 
 	public static void main(String[] args) {
-		new MemberLayout2();
+		new MemberLayout();
 
 	}
 

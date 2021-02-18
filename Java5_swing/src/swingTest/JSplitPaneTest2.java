@@ -33,11 +33,6 @@ public class JSplitPaneTest2 extends JFrame{
 		//왼쪽으로밀치기 오른쪽으로밀치기
 		sp2.setOneTouchExpandable(true);
 		
-		
-		setSize(1200, 800);
-		setVisible(true);
-		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		
 		pack.getPackManSize();
 		Thread t1 = new Thread(pack);
 		t1.start();
