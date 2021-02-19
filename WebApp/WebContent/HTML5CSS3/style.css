@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+/*링크 스타일*/
+a:link{
+	text-decoration:noe; color:gray;
+	/*링크 상태*/
+}
+
+/*방문한 사이트와 안한사이트 구별하는 스타일*/
+/*방문*/
+a:visited{
+	text-decoration: none; color:gray;
+}
+
+/*마우스 오버시*/
+
+a:hover{
+	text-decoration:none; font-weight:bold; color:gray
+}
+
+/*마우스를 누르고있을떄*/
+
+a:active{
+	text-decoration:underline; color:red;
+}

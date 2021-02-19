@@ -11,7 +11,7 @@ public class UpdateProcedure extends DBConn {
 			//		프로시저 호출
 			sql = "{call mem_update(?, ? ,?, ?)}";
 			CallableStatement cstmt = conn.prepareCall(sql);
-			cstmt.setString(1, "이강산");
+			cstmt.setString(1, "이순신");
 			cstmt.setString(2, "010-2222-33333");
 			cstmt.setString(3, "ㄴㄴㄴㄴ@naver.com");
 			cstmt.setString(4, "서울시 용산구");

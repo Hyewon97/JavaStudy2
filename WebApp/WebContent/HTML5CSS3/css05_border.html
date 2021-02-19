@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>border속성</title>
+	<style>
+		body{
+			border:1px solid red;
+		}
+		ul{
+		/*
+			border-top-style:solid;
+			border-right-style:dashed;
+			border-bottom-style:double;
+			border-left-style:dotted;
+			*/
+			/*border-style: solid dashed double dotted;*/
+			border-style:solid;
+			/*선의 두께*/
+			border-width: 5px;
+			
+			/*선의 색상
+			border-top-color:red;
+			border-bottom-color:green;*/
+			border-color : red;
+			
+			border: solid 5px red;
+		}
+		img{
+			border: 5px solid gray;
+			border-radius: 50px 50px; /*둥그렇게만드는거*/
+		}
+	</style>
+</head>
+<body>
+
+	<h1>border속성 : 선의 색상, 두께, 모양</h1>
+	<ul>
+		<li>border-style : 선의모양(solid:실선, dotted:점선 double: 이중선 dashed, none(선없음), groove(홈), inset(볼록선))</li>
+		<li>border-width : 선의 두께(px)</li>
+		<li>border-color : 선의 색상(rgb코드, 컬러명)</li>
+	</ul>
+<div>
+	<ul>
+		<li>html</li>
+		<li>css</li>
+		<li>JAVASCRIPT</li>
+	</ul>
+</div>
+<img id= "img" alt="" src="../img/1.PNG"/>
+</body>
+</html>

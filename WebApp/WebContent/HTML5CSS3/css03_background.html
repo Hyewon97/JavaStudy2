@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>background 속성</title>
+<style type="text/css">
+	/* 
+		background-color: 배경색
+	 */
+	body{
+		/*
+		background-color:#ddd;
+		background-image:url(../img/1.PNG);
+		background-repeat:no-repeat;
+		background-position: right top;
+		background-attachment: firxed;
+		background-size: 50%;
+		*/
+		/*스타일 시트의 그룹화*/
+		background:url(../img/1.PNG) no-repeat firxed right top;
+	}
+	div{background-color:#fff;
+		width:50%;
+		opacity:0.8;
+	}
+</style>
+</head>
+<body>
+	<ul>
+		<li>background-color : 배경색 단색으로 설정(red, blue, rgb코드)</li>
+		<li>background-image : 배경을 이미지로 설정 -> url(이미지 파일명)</li>
+		<li>background-repeat: 배경이미지 반복 여부 설정(no-repeat, repeat-x, repeat- y)</li>
+		<li>background-position: 배경이미지의 위치설정(left, center, right, top, middle, bottom, 백분율)</li>
+		<li>background-attachment : 배경이미지 고정설정(fixed, scroll)</li>
+		<li>background-size : 배경이미지 크기 설정</li>
+	</ul>
+	
+	<img alt="" src="2.PNG"/>
+	<img alt="" src="3.PNG"/>
+</body>
+</html>
