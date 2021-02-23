@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	/* 상태 선택자  */
+	/* :focus -> 커서가 컴포넌트에 들어오면 */
+	input:focus{
+		background-color:yellow;
+	}
+	/* 컴퍼넌트가 체크되면 */
+	input:checked{
+		width:50px; height:50px;
+	}
+	/* disabled: 비활성화 */
+	textarea:disabled{
+		color:red; font-size:1.5em;
+	}
+	
+	/* 읽기전용 */
+	input:readonly{
+		background-color:red; color:#fff;
+	}
+	
+	/* enabled : 활성화 일때 스타일 적용 */
+	input:enabled{
+		background-color:red; color:#fff;
+	}
+</style>
+</head>
+<body>
+	<form method="post" action="bbb.jsp">
+		아이디: <input type="text" name="userid" placeholder="아이디를 입력하세요." size="10" maxlength = "5"/><br/>
+		비밀번호 : <input type="password" name="userpassword" placeholder="비밀번호를 입력해주세요"/><br/>
+		파일첨부 : <input type="file" name="filename"/><br/>
+		체크박스 : <input type="checkbox" name="hobby"  value="등산">등산
+				<input type="checkbox" name="hobby" value="농구"/>농구 
+				<input type="checkbox" name="hobby" value="배구"/>배구
+				<!-- 이름이 같으면 db로 넘길때 알아서 체크된것만 배열로 넘어간다. -->
+		라디오 : <input type="radio" name="gender" value="M"  checked/>남
+			   <input type="radio" name="gender" value="F"/>여<br/>
+		여러줄의 텍스트 : <textarea name="content" rows="5" cols="50" disabled>콘텐츠</textarea><br/>
+		목록태그 : <select name="hobby2" size="3" multiple>
+						<option value="독서">독서</option>
+						<option value="등산">등산</option>
+						<option value="바이크" selected>바이크</option>
+						<option value="달리기">달리기</option>
+				</select>
+				<br/>
+		<input type="button" value="버튼"/>
+	</form>
+</body>
+</html>
