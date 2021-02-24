@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>체크박스 클릭하면 내용보였다 안보였다하기</title>
+<style>
+	div{
+		width:500px; height:500px; overflow:hidden; border:1px solid gray;
+	}
+	
+	div>img{width:100%}
+	
+	input:checked+ div{
+		/* height:0px; 
+		display:none;
+		visibility:hidden;*/
+		
+		transition-duration: 2s;/* 지정한 시간(초단위)을 기준으로 변환한다. */
+		opacity:0.5;
+		width:20px;
+		height:20px;
+	}
+	
+</style>
+</head>
+<body>
+	<input type="checkbox"/>클릭
+	<div>
+		<img alt="" src="../img/1.PNG"/>
+		<img alt="" src="../img/2.PNG"/>
+	</div>
+</body>
+</html>

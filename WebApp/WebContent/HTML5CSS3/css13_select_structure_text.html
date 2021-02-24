@@ -34,7 +34,17 @@
 	 
 </style>
 </head>
-<body>
+<!-- 
+	html 속성을 이용한 마우스 드래그 또는 복사 제한
+	
+	oncontextmenu : 마우스 오른쪽 버튼메뉴 제어
+	onselectstart : 마우스 드래그 시작불가능하게하는것
+	
+	ondragstart : 드래그 시작불가능
+	ondragend : 드래그 종료불가능
+ -->
+ 
+<body oncontextmenu="return false" onselectstart="return false">
 	<div id="std">
 		<ul>
 			<li>구조 선택자~~~~~</li>
@@ -77,6 +87,58 @@
 			<li>구조 선택자~~~~~</li>
 			<li>구조 선택자~~~~~</li>
 		</ul>
+	</div>
+	<style>
+		/* 
+			문자스타일
+			::first-letter -> 문자의 첫번쨰 글자에 대한 스타일
+			::first-line -> 문자열의 첫번째 행에대한 스타일
+			::selection -> 문자열을 선택했을때 선택영역에 대한 스타일
+			
+		 */
+		 #txt::first-letter{
+		 	color:red; font-size: 30px; font-weight:bold;
+		 }
+		 #txt::first-line{
+		 	text-decoration: underline;
+		 	color:blue;
+		 }
+		 #txt::selection{
+		 	background-color:#000; color:yellow;
+		 }
+	</style>
+	<div id="txt">
+		[긴급] 코로나19 어제 440명 신규확진…사흘만에 다시 400명대로 늘어
+		지역발생 417명·해외유입 23명검체 채취하는 의료진[연합뉴스 자료 사진](서울=연합뉴스) 신선미 기자 = 국내 신종 코로나바이러스 감...
+		연합뉴스2021.02.24  10+
+		정총리 "오늘 백신 완제품 첫 출하…일상회복 첫걸음"연합뉴스2021.02.24  30+
+		AZ백신 오늘 안동공장서 첫 출하…내일 보건소 배송·모레 접종연합뉴스2021.02.24  100+
+		오늘부터 모든 해외 입국자 'PCR 음성확인서' 의무 제출해야연합뉴스2021.02.24  30+
+	</div>
+	<style>
+		/* 부정(not) 선택자
+			:not() -> 선택자를 제외한 나머지에 스타일이 지정한다.
+			
+		 */
+		 #lnka>a:not([target=_blank]){
+		 	background-color:orange;
+		 }
+		 
+		 /* 링크 주소를 표시하는 스타일 
+		 	 ::after -> 텍스트를 표시후 주소를 표시한다. 
+		 	 ::before -> 주소를 표시후 텍스트를 표시한다.
+		 	 
+		 
+		 #lnk>a::afer{content: '->' attr(href)}	*/
+		 
+		 #lnk>a::before{content:attr(href) '<-'}
+		 	
+	</style>
+	<div id ="lnk">
+		<a href="https://www.nate.com/">네이트</a><br/>
+		<a href="https://www.daum.net/" target="_blank">다음</a><br/>
+		<a href="../index.html">홈으로</a><br/>
+		<a href="https://www.oracle.com/kr/index.html">오라클</a><br/>
 	</div>
 </body>
 </html>

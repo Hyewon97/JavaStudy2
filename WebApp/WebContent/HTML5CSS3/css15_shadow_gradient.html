@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<style>
+	div{
+		width:500px; height:100px; margin:50px; font-size:3em;
+		border:1px solid gray; text-align:center; line-height:100px;
+	}
+	
+	/* 박스에 그림자 설정 */
+	div:first-child{
+		/*  		왼쪽,오른쪽		위쪽,아래쪽		투명도	그림자색상*/
+		box-shadow: 10px 		10px		10px	gray;
+	}
+	
+	/* 글자에 그림자 설정 */
+	div:nth-of-type(2){
+		text-shadow:5px 5px 5px green;
+	}
+	
+	/* 배경 그라데이션  
+		https://www.colorzilla.com/gradient-editor/
+	*/
+	div:last-child{
+		width:100%; height:700px; font-size:2em; line-height:1.2;
+		
+		background: #1e5799; /* Old browsers */
+		background: -moz-linear-gradient(top,  #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%); /* FF3.6-15 */
+		background: -webkit-linear-gradient(top,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%); /* Chrome10-25,Safari5.1-6 */
+		background: linear-gradient(to bottom,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=0 ); /* IE6-9 */
+		
+	}
+	
+	
+</style>
+<body>
+<div>
+	박스에 그림자 설정
+</div>
+<div>
+	글자에 그림자 설정
+</div>
+<div>
+	[긴급] 코로나19 어제 440명 신규확진…사흘만에 다시 400명대로 늘어지역발생 417명·해외유입 23명검체 채취하는 의료진[연합뉴스 자료 사진](서울=연합뉴스) 신선미 기자 = 국내 신종 코로나바이러스 감
+	[긴급] 코로나19 어제 440명 신규확진…사흘만에 다시 400명대로 늘어
+	지역발생 417명·해외유입 23명검체 채취하는 의료진[연합뉴스 자료 사진](서울=연합뉴스) 신선미 기자 = 국내 신종 코로나바이러스 감
+	[긴급] 코로나19 어제 440명 신규확진…사흘만에 다시 400명대로 늘어
+	지역발생 417명·해외유입 23명검체 채취하는 의료진[연합뉴스 자료 사진](서울=연합뉴스) 신선미 기자 = 국내 신종 코로나바이러스 감
+	[긴급] 코로나19 어제 440명 신규확진…사흘만에 다시 400명대로 늘어
+	지역발생 417명·해외유입 23명검체 채취하는 의료진[연합뉴스 자료 사진](서울=연합뉴스) 신선미 기자 = 국내 신종 코로나바이러스 감
+</div>
+</body>
+</html>

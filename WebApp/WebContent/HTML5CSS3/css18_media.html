@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>@media 쿼리 : 반응형 스타일 지정하기</title>
+<!--  장치에 맞게 픽셀정보 조정                                        0~10 -->
+<meta name="viewport" content="width=device-width, intial-scale=1"/>
+<style>
+	ul,li{margin:0px; padding:0px; list-style-type:none;}
+	li{border:1px solid #ccc; margin:3px; padding:3px; width:45%; float:left}
+	
+	/* 반응형 스타일 지정 */
+	/* 320px~ 500px */
+	/* 	   all, screen, print, tv, projection .... */
+	@media all and (min-width: 320px) and (max-width: 600px){
+		li{
+			background-color: red;
+			color:white;
+		}
+	}
+	@media all and (min-width: 601px) and (max-width: 800px){
+		li{
+			background-color: lightblue;
+			color:red;
+		}
+	}
+	@media all and (min-width: 801px){
+		li{
+			background-color: black;
+			color:white;
+		}
+	}
+</style>
+</head>
+<body>
+	<ul>
+		<li>[긴급] 코로나19 어제 440명 신규확진…사흘만에 다시 400명대로 늘어지역발생 417명·해외유입 23명검체 채취하는 의료진[연합뉴스 자료 사진](서울=연합뉴스) 신선미 기자 = 국내 신종 코로나바이러스 감</li>
+		<li>서울 학부모 10명 중 7명이 신종 코로나바이러스 감염증 대응을 위한 사회적 거리두기가 3단계로 격상되지 않</li>
+		<li>서울시교육청이 지난 18일부터 이틀 간 서울 거주 초·중학교 학부모 16만여명과 교사 1만여명을 대상으로 설</li>
+		<li>초등학교와 중학교 교사 절반 이상도 이와 같은 등교 원칙 완화에 동의하는 것으로 나타났습니다.</li>
+		<li>미국 현지시간 23일 오전 7시 15분쯤, 타이거 우즈는 캘리포니아주 LA 카운티에서 차량 전복 사고를 당했습니다.</li>
+		<li>LA 카운티 소방당국은 우즈의 두 다리 모두 심하게 다쳤다면서 생명에는 지장이 없지만, 다리가 복합 골절됐다고 밝혔습니다.</li>
+		<li>곤살레스 부국장은 "이름을 물었을 때 우즈가 '타이거'라고 말했다"며 "그는 의식이 분명했고 침착했다"고 전했습니다.</li>
+		<li>알렉스 비야누에바 카운티 보안관은 우즈가 약물의 영향을 받았거나 술 냄새가 난다는 징후를 발견하지 못했다고 말했습니다.</li>
+		<li>비야누에바 보안관은 "정상 속도보다 비교적 더 빠르게 달린 것 같다"며 차량 급제동의 흔적은 없었다고 말했습니다.</li>
+	</ul>
+</body>
+</html>
