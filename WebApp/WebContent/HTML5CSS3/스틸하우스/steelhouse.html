@@ -3,8 +3,189 @@
 <head>
 <meta charset="UTF-8">
 <title>스틸하우스</title>
+<style>
+	body, h1, h2, h3, h4, ul, ol, dl, li, dt, dd, p{margin: 0;padding: 0; list-style-type : none;}
+	body{
+		background-color:rgb(99,187,38);
+	}
+	#main{
+		width: 1100px;
+		background-color:white;
+		margin: 30px 100px 30px 100px;
+		height: 900px;
+		overflow:hidden;
+	}
+	/* header 잡기 */
+	header>div{
+		float: left;
+	}
+	#center, #center1{
+		text-align: center;
+	}
+	#center{
+		height:70px;
+		background-color:rgb(147,205,102);
+	}
+	#center1{
+		padding-top: 337px;
+	}
+	
+	#font123{
+		font-size: 20px;
+		color: white;
+		padding-top: 20px;
+	}
+	/* 가운데잡기 */
+	section{
+		display: inline-flex;
+	}
+	
+	#new{
+		padding-left:165px;
+		width:400px;
+	}
+	#gall{
+    	padding-left: 60px;
+		width:400px;
+	}
+	#que{
+		width: 375px;
+		border: 1px solid black;
+		margin-bottom: 10px;
+	}
+	#img1{
+		height:70px;
+		width:80px;
+		padding-right: 10px;
+		
+	}
+	section>article>div li{
+		float: left;
+	    font-size: smaller;
+	}
+	#que1{
+		padding-left: 20px;
+		padding-right: 30px;
+	}
+	
+	#que2{
+		padding-right: 23px;
+		padding-left: 3px;
+	}
+	
+	/* 바닥잡기 */
+	#footerimg{
+		padding-left:165px;
+	}
+	
+	/* a태그 밑줄없애기 */
+	a { text-decoration:none; 
+		color: black;
+	}
+	
+	#namename{
+		color:white;
+	}
+</style>
 </head>
 <body>
-
+	<div id="main">
+		<header>
+			<div id="box1">
+				<ul>
+					<li><img id="center1" alt="" src="img/css_gaon_08.jpg"/></li>
+				</ul>
+			</div>
+			<div id="box2">
+				<ul>
+					<li><img alt="" src="img/css_gaon_02.jpg"/></li>
+					<li id="center"><div id="font123"><a href="#" id="namename">COMPANY</a></div></li>
+					<li><img alt="" src="img/css_gaon_15.jpg"/></li>
+				</ul>
+			</div>
+			<div id="box3">
+				<ul>
+					<li><img alt="" src="img/css_gaon_03.jpg"/></li>
+					<li id="center"><div id="font123"><a href="#" id="namename">STEELHOUSE</a></div></li>
+					<li><img alt="" src="img/css_gaon_16.jpg"/></li>
+				</ul>
+			</div>
+			<div id="box4">
+				<ul>
+					<li><img alt="" src="img/css_gaon_04.jpg"/></li>
+					<li id="center"><div id="font123"><a href="#" id="namename">ARCHITECTURE</a></div></li>
+					<li><img alt="" src="img/css_gaon_17.jpg"/></li>
+				</ul>
+			</div>
+			<div id="box5">
+				<ul>
+					<li><img alt="" src="img/css_gaon_05.jpg"/></li>
+					<li id="center"><div id="font123"><a href="#" id="namename">INTERIOR</a></div></li>
+					<li><img alt="" src="img/css_gaon_18.jpg"/></li>
+				</ul>
+			</div>
+			<div id="box6">
+				<ul>
+					<li><img alt="" src="img/css_gaon_06.jpg"/></li>
+					<li id="center"><div id="font123"><a href="#" id="namename">COMMUNITY</a></div></li>
+					<li><img alt="" src="img/css_gaon_19.jpg"/></li>
+				</ul>
+			</div>
+			<div id="box7">
+				
+			</div>
+		</header>
+		<section>
+			<nav>
+				<div id="new">
+					<ul>
+						<li><img src="img/css_gaon_22.jpg" usemap="#jejuMap"/></li>
+						<li id="que"><a href="#">01. 자주하는 질문</a></li>
+						<li id="que"><a href="#">02. 질문과 답변</a></li>
+						<li id="que"><a href="#">03. 채용 안내</a></li>
+					</ul>
+				</div>
+			</nav>
+			<article>
+				<div id="gall">
+					<div><img src="img/css_gaon_24.jpg" usemap="#jejuMap"/></div>
+					<div>
+						<a href="#"><img src="img/g1.png" id="img1"></a>
+						<a href="#"><img src="img/g2.png" id="img1"></a>
+						<a href="#"><img src="img/g3.png" id="img1"></a>
+						<a href="#"><img src="img/g2.png" id="img1"></a>
+					</div>
+					<div>
+						<ul>
+							<li>멋진 인테리어</li>
+							<li id=que1>이쁜 실내</li>
+							<li id="que2">아파트 단지</li>
+							<li>회의실 내부</li>
+						</ul>
+					</div>
+					<div>
+						<a href="#"><img src="img/g1.png" id="img1"></a>
+						<a href="#"><img src="img/g2.png" id="img1"></a>
+						<a href="#"><img src="img/g3.png" id="img1"></a>
+						<a href="#"><img src="img/g3.png" id="img1"></a>
+					</div>
+					<div>
+						<ul>
+							<li>멋진 인테리어</li>
+							<li id="que1">이쁜 실내</li>
+							<li id="que2">아파트 단지</li>
+							<li>회의실 내부</li>
+						</ul>
+					</div>
+				</div>
+			</article>
+		</section>
+		<footer>
+			<img id="footerimg" src="img/css_gaon_31.jpg"/>
+		</footer>	
+		<map name="jejuMap">
+		<!--                         x1, y1, x2, y2-->
+		<area shape="rect" coords="350,0,375,34" href="#">
+	</div>
 </body>
 </html>
