@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>목록레이아웃</title>
+</head>
+<style>
+	#main1{
+		width:630px;
+		height:650px;
+		float: left;
+	}
+	#main1>div{
+		margin:5px 5px 5px 5px;
+		width:300px;
+		height:200px;
+		border:1px solid lightgray;
+		float: left;
+	}
+	#main2{
+		width:210px;
+		height:650px;
+		float: left;
+	}
+	#c7{
+	margin:5px 5px 5px 0px;
+		width:300px;
+		height:411px;
+		border:1px solid lightgray;
+	}
+	#c8{
+		margin:10px 5px 5px 0px;
+		width:300px;
+		height:200px;
+		border:1px solid lightgray;
+	} 
+	
+	#two{
+		width:100%;
+		height:100%;
+	}
+	img{
+		width:100%;
+		height:70%;
+	}
+	
+	#c1,#c2,#c3,#c4{
+		display:flex;
+	}
+	#Q, #A{
+	    padding-top: 30px;
+	    padding-bottom: 30px;
+	    
+	}
+	#Q{
+		color: rgb(125,165,118);
+	}
+	
+	#A{
+		font-weight:bold;
+	}
+	#QA{
+		width: 25px;
+	}
+	#ques{
+		padding-top: 30px;
+		padding-bottom: 40px;
+		font-weight:bold;
+		padding-left: 5px;
+	}
+	
+	#anser{
+    	padding-top: 22px;
+    	padding-left: 5px;
+	}
+	
+</style>
+<body>
+	<div id="main1">
+		<div id="c1">
+			<div id="QA">
+				<div id="Q">Q</div>
+				<div id="A">A</div>
+			</div>
+			<div id="content">
+				<div id="ques">헐리우드 영화에서 러시아인이 주로 악당으로..</div>
+				<div>냉전시대의 산물입니다. 러시아는 미국의 오랜 숙명의 라이벌이기도 하구요....</div>
+			</div>
+		</div>
+		<div id="c2">
+			<div id="QA">
+				<div id="Q">Q</div>
+				<div id="A">A</div>
+			</div>
+			<div id="content">
+				<div id="ques">'독도'이름의 유래를 알려주세요.</div>
+				<div id="anser">독도와 관련된 명칭은 시대에 따라 문헌에 아주 다양하게 나옵니다. 조선..</div>
+			</div>
+		</div>
+		<div id="c3">
+			<div id="QA">
+				<div id="Q">Q</div>
+				<div id="A">A</div>
+			</div>
+			<div id="content">
+				<div id="ques">매실청은 당뇨환자에게 해로운가요?</div>
+				<div id="anser">매실청은 설탕으로 매실을 발효시킨 식품으로 당분이 많이 함유되어 있습니다..</div>
+			</div>
+		</div>
+		<div id="c4">
+			<div id="QA">
+				<div id="Q">Q</div>
+				<div id="A">A</div>
+			</div>
+			<div id="content">
+				<div id="ques">108배가 다이어트에 도움이 되나요?</div>
+				<div id="anser">108배를 하면 땀도 굉장히 많이나고 전신운동이 되기떄문에 운동 효..</div>
+			</div>
+		</div>
+		<div id="c5">
+			<img src="img2/tab2_2.png"/>
+				<div style="font-weight:bold; padding-top: 10px;">견과류의 하루 적정 섭취량</div>
+				<div style="color: lightgray;">견과류</div>
+		</div>
+		<div id="c6">
+			<img src="img2/tab2_3.png"/>
+				<div style="font-weight:bold; padding-top: 10px;">날벌레가 빛에 몰려드는 이유</div>
+				<div style="color: lightgray;">곤충</div>
+		</div>
+	</div>
+	<div id="main2">
+		<div id="c7"><img src="img2/tab2_1.png" id="two"/></div>
+		<div id="c8"><img src="img2/tab2_4.png"/>
+			<div style="font-weight:bold; padding-top: 10px;">냉면의 유래와 역사</div>
+			<div style="color: lightgray;">음식</div>
+		</div>
+	</div>
+</body>
+</html>

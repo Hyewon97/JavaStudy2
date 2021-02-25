@@ -5,6 +5,7 @@
 <title>목록 레이아웃</title>
 </head>
 <style>
+	body{height:100%;}
 	#main{
 		border-spacing: 10px 10px;
 	}
@@ -12,6 +13,8 @@
 	#name{
 		position: aboslute;
 		background-color : white;
+		height: 100px; 
+		width:300px;
 	}
 	
 	#three{
@@ -19,38 +22,67 @@
 	}
 	#k1{
 		border: 1px solid lightgray;
+		width:300px; 
+		height:300px;
+		padding:30px 0 0 0;
 	}
-	#div{
+	div{
 		display: inline;
+	}
+	#Q{
+		height:100px;
+	}
+	#img{
+		width:300px; 
+		height:300px;
+	}
+	#A{
+		padding: 30px 0 0 0;
 	}
 	
 </style>
 <body>
 	<table id="main">
 		  <tr>
-		    <td id="k1" style="width:300px; height:300px;"><div style="display: inline; height:100px;">Q</div>
-		    											   <div style="display: inline;">헐리우드 영화에서 러시안인이 주로 악당으로...</div><br>
-		    											   <div style="display: inline; height:100px;">A</div>
-		    											   <div style="display: inline;">냉전시대의 산물입니다. 러시아는 미국의 오랜숙명의 라이벌이기도하구요...</div>
+		    <td id="k1">
+		    	<a>Q</a>
+		    	<a>헐리우드 영화에서 러시안인이 주로 악당으로...</a><br/><br/><br/><br/><br/>
+		    	<a id="A">A</a>
+		    	<a>냉전시대의 산물입니다. 러시아는 미국의 오랜숙명의 라이벌이기도하구요...</a>
 		    </td>
-		    <td id="k1" style="width:300px; height:300px;"></td>
-		    <td rowspan="2" style="border:1px solid lightgray;"><img src="img2/tab2_1.png" style="width:300px; height:300px;"></td>
+		    <td id="k1">
+		    	<a>Q</a>
+		    	<a>'독도'이름의 유래를 알려주세요.</a><br/><br/><br/><br/><br/>
+		    	<a id="A">A</a>
+		    	<a>독도와 관련된 명칭은 시대에 따라 문헌에 아주 다양하게 나옵니다. 조선..</a>
+		    </td>
+		    <td rowspan="2" style="border:1px solid lightgray;"><img src="img2/tab2_1.png" id="img"></td>
 		  </tr>
 		  <tr>
-		    <td id="k1" style="width:300px; height:300px;"></td>
-		    <td id="k1" style="width:300px; height:300px;"></td>
+		    <td id="k1">
+		    	<a>Q</a>
+		    	<a>매실청은 당뇨환자에게 해로운가요?</a><br/><br/><br/><br/><br/>
+		    	<a id="A">A</a>
+		    	<a>매실청은 설탕으로 매실을 발효시킨 식품으로 당분이 많이 함유되어 있습니...</a>
+		    </td>
+		    <td id="k1">
+		    	<a>Q</a>
+		    	<a>108배가 다이어트에 도움이되나요?</a><br/><br/><br/><br/><br/>
+		    	<a id="A">A</a>
+		    	<a>108배를 하면 땀도 굉장히 많이나고 전신운동이 되기 때문에 운동 효...</a>
+		    </td>
 		  </tr>
 		  <tr id="trthree">
-		    <td id="three"><img alt="" src="img2/tab2_2.png" style="width:300px; height:200px;"/><br>
-		    				<a id="name" style="height: 100px; width:300px;">견과류의 하루 적정 섭취량</a><br>
+		    <td id="three"><img alt="" src="img2/tab2_2.png" id="img"/><br>
+		    				<a id="name">견과류의 하루 적정 섭취량</a><br>
 		    				<a>견과류</a>				
 		    </td>
-		    <td id="three"><img alt="" src="img2/tab2_3.png" style="width:300px; height:200px;"/><br>
-		    			   <a id="name" style="height: 100px; width:300px;">날벌레가 빛에 몰려드는 이유</a><br>
+		    <td id="three"><img alt="" src="img2/tab2_3.png" id="img"/><br>
+		    			   <a id="name">날벌레가 빛에 몰려드는 이유</a><br>
 		    			   <a>곤충</a>
 		    </td>
-		    <td id="three"><img alt="" src="img2/tab2_4.png" style="width:300px; height:200px;"/><br>
-		    			   <a id="name" style="height: 100px; width:300px;">냉면의 유래와 역사</a><br>
+		    <td id="three"><img alt="" src="img2/tab2_4.png" id="img"/><br>
+		    			   <a id="name">냉면의 유래와 역사</a><br>
 		    			   <a>음식</a>
 		    </td>
 		  </tr>
