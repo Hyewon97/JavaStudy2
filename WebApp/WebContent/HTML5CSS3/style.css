@@ -3,6 +3,7 @@
 /*링크 스타일*/
 a:link{
 	text-decoration:noe; color:gray;
+	text-decoration:none;
 	/*링크 상태*/
 }
 
@@ -21,5 +22,5 @@ a:hover{
 /*마우스를 누르고있을떄*/
 
 a:active{
-	text-decoration:underline; color:red;
+	text-decoration:underline; color:gray;
 }
