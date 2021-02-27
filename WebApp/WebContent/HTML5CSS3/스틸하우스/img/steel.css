@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+body{
+	background-color:#92cc65;
+}
+
+body>div{
+	width:1060px;
+	overflow:auto;
+	background-color:#fff;
+	margin: 0 auto;
+}
+
+header{
+	height:334px;
+	padding-left:165px;
+}
+/* 메뉴 */
+nav a:link, nav a:visited, nav a:actice{
+	text-decoration:none;
+	color:#fff;
+}
+nav a:hover{
+	text-decoration:none;
+	color:yellow;
+}
+
+nav{
+	background-color:#63bb27;
+	height:72px;
+	margin-right:60px
+}
+nav>*,nav>ul>li{
+	float:left;
+}
+nav li{
+	height:72px;
+	line-height:72px;
+	font-size:1.5em;
+	text-align:center;
+	padding:0 15px;
+}
+
+/* 가운데 배너 */
+#banner{
+	
+}

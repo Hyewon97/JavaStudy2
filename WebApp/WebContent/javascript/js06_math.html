@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>math함수</title>
+<script type="text/javascript">
+	function mathTest(){
+		var tag = "<ul>";
+		var num =123.5678;
+		
+		tag += "<li>PI = " + math.PI + "</li>";
+		tag += "<li>pow = " + math.pow(5,3)+ "</li>";
+		tag += "<li>round = " + Math.round(num) + "</li>";
+		tag += "<li>sqrt = " + Math.sqrt(10) + "</li>";
+		tag += "<li>abs = " + Math.abs(-20) + "</li>";
+		tag += "<li>ceil = " + Math.ceil(num) + "</li>";//올림
+		tag += "<li>floor = " + Math.floor(num) + "</li>"; //버림
+		
+		tag += "<li>max = " + Math.max(58,69,15,25,95,85,254,151,265) + "</li>"; //가장큰값
+		tag += "<li>min = " + Math.min(58,69,15,25,95,85,254,151,265) + "</li>"; //가장작은값
+		
+		//					정수화(난수*(큰수-작은수+1))+작은수
+		tag += "<li>random = " + Math.random() + "</li>";
+		
+		document.getElementById("view").innerHTML = tag +"</ul>";
+	}
+</script>
+</head>
+<body onload="mathTest()">
+	<div id="view"></div>
+
+</body>
+</html>

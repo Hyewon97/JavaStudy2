@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+/* Reset */
+body, h1, h2, h3, h4, ul, ol, dl, li, dt, dd, p{margin: 0;padding: 0; list-style-type:none}
+
+#calender{
+	overflow:auto;	
+}
+
+#dayPane li{
+	float:left;
+}
