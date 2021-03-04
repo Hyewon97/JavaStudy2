@@ -22,6 +22,9 @@
     #realmain{
         text-align: center;
     }
+    #nabi{
+        position: relative;
+    }
 </style>
 </head>
 <body  onload="setInterval('imageMover()',100);">
@@ -91,9 +94,19 @@
 		x = x +stepX;
         y = y +stepY;
 		nabi.style.left = x+ "px";
-        nabi.style.right = y + "px";
-		if(x<=-820) stepX =5;
-		if(x==0) stepX = -5;
+        nabi.style.top = y+"px";
+		if(x<=-1000){
+            stepX =5;
+        }
+        if(y<=-850){
+            stepY =5;
+        }
+		if(x==350){
+            stepX = -5;
+        }
+        if(y==0){
+            stepY = -5;
+        }
 	}
 </script>
 </html>
