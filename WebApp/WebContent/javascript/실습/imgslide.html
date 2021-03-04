@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>영화포스트</title>
+<style onload="startNumber()">
+	#main{
+		border: 1px solid gray;
+		display: inline-flex;
+		width:1000px;
+		overflow: hidden;
+	}
+	body{
+		text-align:center;
+	}
+	#view{
+		float: left;
+   		display: contents;
+	}
+	#left{
+      position: fixed;
+      height: 114px;
+      left: 430px;
+    }
+    #right{
+      position: fixed;
+      height: 114px;
+      left: 1460px;
+    }
+</style>
+</head>
+<body>
+	<div id= main>
+		<button id="left">◁</button>
+			<div id="view"></div>
+		<button id="right">▷</button>
+	</div>
+</body>
+<script>
+	var imgTag="";
+	for(var i=1; i<=20; i++){
+		if(i<10){
+			imgTag +="<img src='img/movie0"+i+".png'/>";
+		}
+		if(i>=10){
+			imgTag +="<img src='img/movie"+i+".png'/>";
+		}
+	}
+	document.getElementById("view").innerHTML = imgTag;
+	
+	var x=0;
+	var y=1;
+   	function step(){
+   		if(x>=0 && y==1){
+	   		x+=10;
+	   		main.scrollTo(x,0);
+	   		if(x>=600){
+	   			y=2;	
+	   		}
+   		}
+   		if(y==2){
+   			x-=10;
+   	   		main.scrollTo(x,0);
+   	   		if(x==0){
+   	   			x=10;
+   	   			y=1;
+   	   		}
+   		}
+   	}
+   	function startNumber(){
+		setInterval("step()", 100);
+	}
+    
+   	
+	
+    
+</script>
+</html>

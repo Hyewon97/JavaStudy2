@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>이미지 슬라이드</title>
+<style type="text/css">
+	#post{width:880px; height:114px; margin:0px auto;}
+	#post>input[type=button]{
+		width:30px; height:114px;
+	}
+	#post>div{
+		width:820px; height:114px; overflow:hidden;	
+	}
+	#post>input, #post>div{
+		float:left;
+	}
+	#imgLst{
+		width:1640px; position: relative;
+	}
+</style>
+<script>
+	function setPotImage(){
+		var imgTag="";
+		for(var i=1; i<=20; i++){
+			if(i<10){
+				imgTag +="<img src='img/movie0"+i+".png'/>";
+			}
+			if(i>=10){
+				imgTag +="<img src='img/movie"+i+".png'/>";
+			}
+		}
+		document.getElementById("imgLst").innerHTML = imgTag;
+	}
+	
+	//movie리스트 움직이는 메소드
+	var x=0;
+	var stepX = -5;
+	var timer;
+	function imageMover(){
+		var movie = document.getElementById("imgLst");
+		x = x +stepX;
+		movie.style.left = x+ "px";
+		if(x<=-820) stepX =5;
+		if(x==0) stepX = -5;
+	}
+	
+</script>
+</head>
+<body onload="setPotImage(); timer = setInterval('imageMover()',100);">
+	<div id="post">
+		<input type="button" value="◁" onclick="stepX=-5;"/>
+		<div onmouseenter="clearInterval(timer);" onmouseleave=" timer =setInterval('imageMover()', 100)">
+			<div id="imgLst"></div>
+		</div>
+		<input type="button" value="▷" onclick="stepX=5;"/>
+	</div>
+</body>
+</html>

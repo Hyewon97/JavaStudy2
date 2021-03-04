@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	var win
+	//window 내장 객체
+	function openPopup(){
+		//1. 팝업창에 표시댈 파일명
+		//2. 팝업창의 이름
+		//3. 창에대한 옵션들(크기(width),폭(height), 창의 좌표설정(left,top))
+		win=window.open("popup.html", "w","height=450, width=500, left=300");
+		//win=window.open("popup.html", "w","x, y");
+		
+		var left = screen.width/2 - win.outerWidth/2;
+		var top = screen.height/2 - win.outerheight/2;
+		win.moveTo(left,top);
+	}
+	//openPopup();
+	function closePopup(){
+		win.close();
+		//window.close();
+		//self.close();
+	}
+	function winResize(){
+		//창(window)의 크기 조절
+		//절대 사이즈로 조정하기
+		//win.resizeTo(300,700);
+		
+		//상대 사이즈로 설정하기
+		//			w, h
+		win.resizeBy(10,10);
+	}
+	function winMove(){
+		//window의 위치 설정
+		//절대 위치 설정
+		// x,y
+		//win.moveTo(300,300);
+		
+		//상대위치 설정
+		win.moveBy(10,10);
+	}
+	function winInfo(){
+		var winTag="";
+		
+		//window 좌표
+		var x = window.screenX;
+		var y = window.screenY;
+		winTag +="window.screenX="+ x + "<br/>";
+		winTag +="window.screenY="+ y + "<br/>";
+		
+		//window의 폭과 높이
+		winTag += "window.outerWidth=" + window.outerWidth + "<br/>";
+		winTag += " window.outerHeight = "+ window.outerHeight+"<br/>"
+		
+		//window의 컨텐츠 영역의 폭과 높이
+		winTag +="window.innerWidth="+ window.outerWidth+"<br/>";
+		winTag +="window.innerHeight=" + window.innerHeight+"<br/>"
+		
+		document.getElementById("winInfo").innerHTML = winTag;
+	}
+	
+</script>
+</head>
+<body onload="winInfo()">
+	<h1>window 내장객체</h1>
+	<input type="button" value="팝업창 띄우기" onclick="openPopup()"/>
+	<input type="button" value="팝업창 닫기" onclick="closePopup()"/>
+	<input type="button" value="창크기 조절" onclick="winResize()"/>
+	<input type="button" value="창위치 이동" onclick="winMove()"/>
+	<div id="winInfo" style="border:1px solid gray;"></div>
+	
+</body>
+</html>

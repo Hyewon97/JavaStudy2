@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event</title>
+<style>
+    #overOut, #overOut *, #overOut2, #overOut2 *{
+        padding: 30px;
+        border: 1px solid gray;
+        margin-bottom: 30px;
+    }
+    #overOut, #overOut2{
+        background-color: yellow;
+    }
+    #overOut>h1, #overOut2>h1{
+        background-color: pink;
+    }
+    #overOut b, #overOut2 b{
+        background-color: #ddd;
+    }
+    #view, #view2{
+        font-size: 2em;
+    }
+    </style>
+    <script>
+        //onclick
+        //omouseover, onmouseout : 마우스가 객체로 들어갈때, 나올때(하위객체도 이벤트가 생긴다)
+                                                        //div에 주면, div안에 모든 객체들도 같은 이벤트 적용
+        var cnt=0;
+        function overTest(){//마우스 오버일때
+            cnt++;
+            viewOutput();
+        }
+        var outCnt = 0;
+        function outTest() {
+            outCnt++;
+            viewOutput();
+        }
+        function viewOutput(){
+            document.getElementById("view").innerHTML = "mouseover"+cnt+"번째 실행<br/>mouseout"+outCnt+"번째 실행";
+        }
+
+        //onmouseenter, onmouseleave : 마우스가 객체로 들어오고 나갈때 발생하는 이벤트(하위갹체 이벤트가 발생하지 않는다.)
+        var cnt2=0, outCnt2=0;
+        function enterTest(){
+            cnt2++;
+            document.getElementById("view2").innerHTML = "mouseEnter > > >"+cnt2+"번째 실행<br/>mouseLeave > > >"+outCnt2+"번째 실행";
+        }
+        function leaveTest(){
+            outCnt2++;
+            document.getElementById("view2").innerHTML = "mouseEnter > > >"+cnt2+"번째 실행<br/>mouseLeave > > >"+outCnt2+"번째 실행";
+        }
+        function formCheck(){
+        	//아이디
+        	if(document.getElementById("userid").value==""){
+        		alert("아이디를 입력하세요");
+        		document.getElementById("userid").focus();//아이디 박스에 커서 이동
+        		return false;
+        	}
+        	//비밀번호
+        	if(document.getElementById("userpwd").value==""){
+        		alert("비밀번호를 입력하세요..")
+        		document.getElementById("userpwd").focus();
+        		return false;
+        	}
+        	//return true;
+        	//form 을 submit발생시킨다.
+        	//document.logFrm.submit();
+        	document.getElementById("logFrm").submit();
+        }
+	
+        function keyTest(){
+        	var keyCode = event.keyCode;
+        	document.getElementById("view2").innerHTML = keyCode;
+        }
+        
+        //onmouseup: 마우스를 누른 후 놓으면
+        //onmousedown: 마우스를 누른 상태
+        //onmousemove: 마우스를 움직이면 
+
+        //onfocus : 커서가 객체에 들어오면
+        //onBlur : 커서가 객체를 나가면
+		//onsubmit : form에서 submit이벤트가 발생했을때
+		// onreset : 폼에서 reset이벤트가 발생
+		
+		//onkeydown : key를 누른상태
+		//onkeypress : key를 누른상태
+		//onkeyup : key를 누른후 놓으면
+		
+		//onload : body가 로딩되면
+		//onunload : body가 로딩이 되지않으면
+		
+		//onresize: 창의 크기가 바뀌면
+		
+        </script>
+</head>
+<body>
+
+    <form method="POST" action="aaa.jsp" id="LogFrm" name="LogFrm" onsubmit="formCheck()" onreset="reset">
+        아이디 : <input type="text" name="userid" id="userid" onfocus="this.style.backgroundColor='pink'" onblur="this.style.color='red'"/><br/>
+        비밀번호 : <input type="password" name="userpwd" id="userpwd"/><br/>
+        <input type="text" name="username" id="user name" onkeydown="this.style.background='lightblue;keyTest();'" onchange="this.style.fontSize='2em'"/><br/>
+        <select onchange="this.style.fontSize='2em'">
+        	<option>1</option>
+        	<option>2</option>
+        	<option>3</option>
+        	<option>4</option>
+        </select>
+        <input type="submit" value="로그인"/>
+        <button>로그인</button>
+        <input type="button" value="LOGIN" onclick="logCheck2()"/>
+        <input type="reset" value="다시쓰기"/>
+    </form>
+    <div id="overOut2" onmouseenter="enterTest()" onmouseleave="leaveTest()"> 
+        <h1>onmouseEnter, <b>onmouseLeave</b> event</h1>
+    </div>
+
+    <div id="view2"></div>
+
+    <hr/>
+    <div id="overOut" onmouseover="overTest()" onmouseout="outTest()"> 
+        <h1>onmouseover, <b>onmouseout</b> event</h1>
+    </div>
+
+    <div id="view"></div>
+</body>
+</html>

@@ -1,26 +1,44 @@
-	var nowDate = new Date(); //현재 날짜, 시간
-	document.write("nowDate = " + nowDate);
-	
-	/* 
-		요일: getDay()	일요일:0, 월요일:1 ........	토요일:6
-	*/
-	document.write("<br/>요일 -> "+ nowDate.getDay());
+var nowDate = new Date(); //현재 날짜, 시간
+	var todayMonth = nowDate.getMonth() + 1;  //현재 월
+	document.getElementById("monthPane").innerHTML = todayMonth + "월";
+		
+	//첫번째날
+	var firstDate = new Date(nowDate.getFullYear(), nowDate.getMonth(),1);
 	
 	//마지막날
-	var date = new Date(nowDate.getFullYear(), nowDate.getMonth()+1, 0);
-	document.write("<br/>마지막날 --> "+ date.getDay());
+	var lastdate = new Date(nowDate.getFullYear(), nowDate.getMonth()+1, 0);
+
+	//1일
+	var day = firstDate.getDay();
 	
-	todayYear = today.getFullYear();
-	todayMonth = today.getMonth() + 1; // 월은 0부터 시작하기때문에 + 1을 해줘야지 해당 달의 월이 나온다.
-	today_yearMonth = todayYear + " - " + todayMonth;
-	document.getElementById("yearMonth").innerHTML= today_yearMonth;
-	let firstDate = new Date(today.getFullYear(), today.getMonth(),1);
-	let lastDate = new Date(today.getFullYear(), today.getMonth()+1,0);
-	let day = firstDate.getDay();
-	let calendar = document.getElementById("calendar_table");
-	let week = Math.ceil(lastDate.getDate()/7) + 1;
+	//주     	2월기준 5주
+	var week = Math.ceil(lastdate.getDate()/7) + 1;
 	
+	//쓰일 달력변수
+	var calendar = document.getElementById("calendar_table");
 	
-	function threeMonth(){
-	 	var day
+	//이번달 달력구현
+	function Calender(){
+		var leftDays = 7;
+		var setDays = 1;
+			for(i = 1; i < week; i++){
+				var row = calendar.insertRow();
+				while(day != 0){
+					row.insertCell().innerHTML = "";
+					day -= 1;
+					leftDays -= 1;
+				} // 1주
+				while(leftDays != 0){
+					if(setDays > lastdate.getDate()){
+						row.insertCell().innerHTML = "";
+						leftDays -= 1;
+					}else{
+						row.insertCell().innerHTML = setDays;
+						setDays +=1;
+						leftDays -= 1;
+					}
+				}
+				leftDays = 7;
+			}
 	}
+	Calender()

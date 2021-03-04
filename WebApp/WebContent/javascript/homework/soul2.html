@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	/* Reset */
+	*{margin: 0;padding: 0;}
+	#main>div{
+		text-align:center;
+		float:left;
+		width: 33%;
+	}
+	#up{
+		background-color:skyblue;
+		height: 100px;
+	}
+	#down{
+		background-color:pink;
+		height: 100px;
+	}
+	#view>img{
+		width:100%;
+	}
+	hr{
+		position: sticky;
+		border: solid 3px blue;
+		width: 2000px;
+		margin-top: 200px;
+		overflow: visible;
+		top:0;
+	}
+	#img1{
+    	margin-top: 6px;
+	}
+	#left{
+	    margin-left: 50%;
+	    background-color: yellow;
+	    height:500px;
+	    position: sticky;
+	    top:6px;
+	}
+	#right{
+		margin-right: 50%;
+		background-color: orange;
+		height:700px;
+		position: sticky;
+		top:6px;
+	}
+</style>
+</head>
+<body>
+<div id="main">
+	<div id=1 style="height: 5000px;"><hr id="hr"/><div id="left">aa</div></div>
+	<div id=2>
+		<div id="up" onclick="kangsan()"></div>
+		<div id="down"></div>
+		<div id="view">
+			<img id="img1" src="img/1.PNG">
+			<img src="img/2.PNG">
+			<img src="img/3.PNG">
+			<img src="img/4.PNG">
+			<img src="img/5.PNG">
+			<img src="img/6.PNG">
+		</div>
+	</div>
+	<div id=3 style="height: 5000px;"><hr id="hr2"/><div id="right">bbb</div>
+	</div>
+</div>
+
+</body>
+<script type="text/javascript">
+	function kangsan(){
+		document.getElementById('up').style.display="none";
+		document.getElementById('hr').style.marginTop='100px';
+		document.getElementById('hr2').style.marginTop='100px';
+	}
+</script>
+</html>

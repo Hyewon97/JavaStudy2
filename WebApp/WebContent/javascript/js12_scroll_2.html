@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<script>
+	var n=1;
+	var timer;
+	
+	function countNumber(){
+		
+		window.scrollTo(0,500*n);
+		n++;
+		console.log('bbbb',n);
+	}
+	function startNumber(){
+		//여러번 호출하게하기
+		// setInterval은 한번 호출하면 일정한 시간 간격으로 함수를 자동호출한다.
+		// 			호출할 함수명	    시간(밀리초)
+		timer = setInterval("countNumber()", 1000);
+	}
+</script>
+<body onload="startNumber()">
+	<div>
+		<script>
+			for(var i=1; i<=6; i++){
+				document.write("<img src='../img/"+ i +".PNG'/><br/>");
+			}
+		</script>
+	</div>
+</body>
+</html>
