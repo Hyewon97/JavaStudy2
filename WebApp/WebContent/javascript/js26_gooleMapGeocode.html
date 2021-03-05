@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>구글맵</title>
+<!--                                                                                                         callback=initMap  쓰면 자동으로 function initMap실행 -->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiyi8IBKuUJnY0RccI6KvVWJslar5cPWg&callback=initMap"></script>
+</head>
+<style>
+    #mapSearch{
+        position:absolute;
+        top:50px;
+        left:400px;
+    }
+</style>
+<body>
+        <div id="gMap"></div>
+        <!-- 검색키 입력 -->
+        <div id="mapSearch">
+            <input type="text" id="addrSearch"/>
+            <input type="button" value="Search" onclick="mapSearchStart()"/>
+        </div>
+</body>
+<script>
+   var latitude, longitude;
+   var addr; //지명
+   var home; //홈페이지 주소
+   var img; //대표이미지
+
+   function setMap(){
+       latitude = 37.5729503;
+       longitude = 126.9793578;
+
+       pAddr = ['서울 선유도', '서울 뚝섬', '서울 잠실종합운동장', '서울 시청'];
+       pHome = ['https://www.nate.com', 'https://www.daum.net', 'https://www.naver.com', 'http://www.seoul.go.kr/main/index.jsp'];
+       pImg = ['1.PNG','2.PNG','3.PNG','4.PNG']
+   }
+
+   var map, geoCoder;
+    function initMap() {
+        setMap();
+
+        document.getElementById("gMap").style.height = window.innerHeight - 20 + "px";
+
+        var myCenter = new google.maps.LatLng(latitude, longitude);
+        var option = {
+            center: myCenter,
+            zoom: 12,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
+        map = new google.maps.Map(document.getElementById("gMap"), option);
+
+        geoCoder = new google.maps.Geocoder(); //지명으로 지도 위치를 설정 할 수 있는 객체 
+        for(var i=0; i<pAddr.length; i++){
+            setGeocoderPosition(pAddr[i], pHome[i], pImg[i]);
+        }
+    }
+
+    function setGeocoderPosition(addr, home, img){
+        geoCoder.geocode(
+            //지도를 표시 할 지명을 표시한다..
+            {'address' : addr},
+            //지명이 존재하는 곳이면 status에 'OK'가 들어간다, result에 지명에대한 위도/경도 정보를 담아준다.
+            function (results, status) {
+                if(status==='OK'){ //주소가 있으면
+                    //지정된 위치를 센터로 옮겨주는 작업, loction에 위도 경도가 담겨있음.
+                    map.setCenter(results[0].geometry.location);
+                    //현재 위치 마킹
+                    var marker = new google.maps.Marker({
+                        map : map,
+                        icon : '../img/gmap_pin.png',
+                        title : results[0]['formatted_address'], //주소=formatted_address가 가지고 있다
+                        position : results[0].geometry.location
+                    });
+                    var la = results[0]['geometry']['location']['lat']();//위도
+                    var ln = results[0]['geometry']['location']['lng']();//경도
+                    var add = results[0]['formatted_address'];
+
+                    var infoText = "위도: " + la + "<br/> 경도 : "+ ln + "<br/> 주소: "+ add + "<br/>";
+                        infoText += "<a href='"+home+"'><img src='../img/"+img+"' width='80' height='50'/></a>"
+
+                    var info = new google.maps.InfoWindow({content:infoText});
+
+                    //팝업 이벤트처리
+                    google.maps.event.addListener(marker, 'mouseover', function(){info.open(map, marker)});
+                    //google.maps.event.addListener(marker, 'mouseout', function(){info.close(map, marker)});
+
+                }//if절 끝
+            }//function 끝
+        ); //Geocoder의 매소드
+    }
+
+    //지역검색
+    function mapSearchStart(){
+        var search = document.getElementById("addrSearch").value;
+        if(search!=""){
+            setGeocoderPosition(search, 'https://www.nate.com', '../img/1.PNG');
+        }
+    }
+</script>
+</html>

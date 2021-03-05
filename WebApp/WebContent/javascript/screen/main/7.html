@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>화면보호기</title>
+<style>
+    #nabi{
+        position: relative;
+    }
+    #main{
+        text-align: center;
+    }
+</style>
+</head>
+<body onload="setInterval('imageMover()',100);" onkeydown="previous()"> 
+    <div id= "main">
+	    <img src="../img/7.PNG" style='height: 900px'/><img src='../img/1.gif' style='height:90px' id="nabi"/>
+    </div>
+</body>
+<script>
+    var windowX = window.outerWidth;
+    var windowY = window.outerHeight;
+    var x=0;
+    var y=0;
+	var stepX = -5;
+    var stepY = -5;
+	function imageMover(){
+		var nabi = document.getElementById("nabi");
+		x = x +stepX;
+        y = y +stepY;
+		nabi.style.left = x+ "px";
+        nabi.style.top = y+"px";
+		if(x<=-1000){
+            stepX =5;
+        }
+        if(y<=-850){
+            stepY =5;
+        }
+		if(x==350){
+            stepX = -5;
+        }
+        if(y==0){
+            stepY = -5;
+        }
+	}
+    function previous(){
+        history.go(-1);
+    }
+</script>
+</html>
