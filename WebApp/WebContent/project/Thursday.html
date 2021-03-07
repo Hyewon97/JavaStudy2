@@ -5,11 +5,25 @@
     <title>웹툰 목요일</title>
 <Style>
     *{margin:0; padding: 0; list-style-type: none;}
+    #thursDayGood>ul>li{
+        float: left;
+        padding-right: 20px;
+    }
+    #thursDayGood{
+        overflow:auto;
+    }
+    #thursDayMain>ul>li{
+        float:left;
+    }
+    a {
+        text-decoration: none;
+        color: black;
+    }
 </Style>
 </head>
 <body>
     <!-- 목요추천웹툰 상단바 -->
-    <div>
+    <div id="thursDayGood">
         <h1>목요 추천웹툰 <span>TODAY: 현재날짜 자바스크립트로 넣기</span></h1>
         <ul>
             <li>
@@ -37,7 +51,7 @@
                 </div>
                 <dt>
                     <a href = "#">
-                        <strong title="당신의 과녕">당신의 과녁</strong>
+                        <strong title="당신의 과녁">당신의 과녁</strong>
                     </a>
                 </dt>
                 <dt>
@@ -69,6 +83,21 @@
                     ★★★★★ 9.92
                 </dt>
             </li>
+        </ul>
+    </div>
+    <div id="thursDayMain">
+        <!-- 클릭시 이벤트생성해야함 -->
+        <ul>
+            <li>목요 전체 웹툰</li>
+            <li><a onclick="#" href="#"><span>인기순</span></a></li>
+            <li><a onclick="#" href="#"><span>업데이트순</span></a></li>
+            <li><a onclick="#" href="#"><span>조회순</span></a></li>
+            <li><a onclick="#" href="#"><span>별점순</span></a></li>
+        </ul>
+        <!-- 썸네일형 리스트형 자바스크립트 써야함-->
+        <ul>
+            <li><a href="#"><img src="#" width="19" height="19" title="썸네일형"></a></li>
+            <li><a href="#"><img src="#" width="19" height="19" title="리스트형"></a></li>
         </ul>
     </div>
 </body>
