@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>TEST</title>
+ <Script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></Script>
+ <script>
+     $(function(){
+         //상태선택자
+         // : text -> 속성값이 text인 객체를 선택한다.
+         $(":text").css("background-color", "pink");
+         
+         //:checked ->
+         $(":checked").attr("checked", false);
+
+         //selectedIndex -> 선택된 목록의 index
+         console.log($("#site").prop("selectedIndex"), $("#site").val());
+         // :selected
+         $(":selected").attr("selected", false);
+
+         //컨텐츠 선택자
+         $("p").css("margin", "10px").css("padding", "10px").css("border", "3px green solid");
+
+         //contains() : 특정 문자열이 포함된 경우 선택
+         $("p:contains('네이버')").css('background-color','pink');
+
+         //has() : 하위에 특정 태그가 포함되면 선택
+         $("p:has('b')").css('color', 'red');
+
+         //not() : 특정 선택자를 제외한 나머지를 선택한다.
+         $("p:not(:first)").css('color','blue');
+
+         //closest() : 조상선택자
+         $("i").closest("body").css("border", "3px dashed green");
+
+         //filter()
+         $("p").filter(".c1").css('text-decoration', "underline");
+
+         //contents() : 선택자의 하위 내용이 다른 선택자에 포함된 경우
+         $('p').contents().css('font-size', '2em');
+
+     });
+ </script>
+</head>
+<body>
+    <div>
+        <p>
+            네이버·다음 모바일 앱의 뉴스서비스 <b>알고리즘이 보수성향 언론사들의 기</b>사 위주로 편향돼 있다는 세간의 인식을 확인해 주는 조사 결과가 나왔다. 
+            이용자가 예전에 읽은 기사를 토대로 ‘맞춤형’ 기사를 추천해준다는 인공지능 알고리즘도 이용자의 성향과 무관하게 보수·중도 언론만 추천하는 것으로 나타났다. 
+            그동안 네이버·다음 모두 “뉴스서비스는 사람의 주관적 개입을 배제하고 인공지능 알고리즘을 이용해 자동배치한다”고 주장해왔지만, 알고리즘 설계의 ‘공정성’ 문제는 
+            여전히 해소되지 않은 상태라는 반박이 나온다.
+        </p>
+        <p class="c1">
+            네이버·다음 모바일 앱의 뉴스서비스 알고리즘이 보수성향 언론사들의 기사 위주로 편향돼 있다는 세간의 인식을 확인해 주는 조사 결과가 나왔다. 
+            이용자가 예전에 읽은 기사를 토대로 ‘맞춤형’ 기사를 추천해준다는 인공지능 알고리즘도 이용자의 성향과 무관하게 보수·중도 언론만 추천하는 것으로 나타났다. 
+            그동안 네이버·다음 모두 “뉴스서비스는 사람의 주관적 개입을 배제하고 인공지능 알고리즘을 이용해 자동배치한다”고 주장해왔지만, 알고리즘 설계의 ‘공정성’ 문제는 
+            여전히 해소되지 않은 상태라는 반박이 나온다.
+        </p>
+        <p class="c2">
+            네이버·다음 모바일 앱의 뉴스서비스 알고리즘이 보수성향 언론사들의 기사 위주로 편향돼 있다는 세간의 인식을 확인해 주는 조사 결과가 나왔다. 
+            이용자가 예전에 읽은 기사를 토대로 ‘맞춤형’ 기사를 추천해<i>준다는</i> 인공지능 알고리즘도 이용자의 성향과 무관하게 보수·중도 언론만 추천하는 것으로 나타났다. 
+            그동안 네이버·다음 모두 “뉴스서비스는 사람의 주관적 개입을 배제하고 인공지능 알고리즘을 이용해 자동배치한다”고 주장해왔지만, 알고리즘 설계의 ‘공정성’ 문제는 
+            여전히 해소되지 않은 상태라는 반박이 나온다.
+        </p>
+    </div>
+    <ul>
+        <li><label>이름</label></li>
+        <li><input type="text" name="username" id="username"/></li>
+        <li><label>연락처</label></li>
+        <li><input type="text" name="tel" id="tel"/></li>
+        <li><label>사용 동의 여부</label></li>
+        <li><input type="radio" name="accept" value="yes" checked/>동의
+            <input type="radio" name="accept" value="no"/>동의안함
+        </li>
+        <li><label>자주가는 사이트</label></li>
+        <li>
+            <select name= "site" id="site">
+                <option value="not">==직접선택==</option>
+                <option value="naver">네이버</option>
+                <option value="daum">다음</option>
+                <option value="nat" selected>네이트</option>
+            </select>
+        </li>
+        <li>
+            <input type="button" value="확인"/>
+        </li>
+    </ul>
+</body>
+</html>

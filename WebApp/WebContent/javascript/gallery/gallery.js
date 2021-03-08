@@ -42,11 +42,11 @@ function setMouseDrag(){
     if(flag){
         moveX = event.clientX;
         moveY = event.clientY;
-        
+
         //나중에 발생한 이벤트 좌표 - 이전에 발생한 이벤트 좌표
         var x = moveX - eventX;
         var y = moveY - eventY;
-        
+
         //팝업 이동하기
         popup.left = divX + x + "px";
         popup.top = divY + y + "px";
@@ -67,8 +67,10 @@ function modalClick(selImg){
     document.getElementById('modal').style.display='block';
     document.getElementById('modalback').style.display='block';
 
-    //위치
+    var xx = event.clientX -750;
+    var yy = event.clientY - 370;
+    console.log("z =" + xx + "  y = " + yy)
     popup= document.getElementById("modal").style
-    popup.left="0px";
-    popup.top="0px";
-}
+    popup.left= xx +"px";
+    popup.top= yy +"px";
+}z

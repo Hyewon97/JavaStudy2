@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>TEST</title>
+    <Script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></Script>
+    <script>
+        $(document).ready(function () {
+            //Jquery 실행부
+
+            //jquery 선택자 : 태그 클래스 아이디, ..............
+
+            //스타일 css(속성, 속성값)함수 fontSize, font-size, font-size
+            $("input").css("font-size", "2em"); //태그 선택자
+            $("#username").css("color", "green"); //아이디 선택자
+            $(".c1").css("background-color", "pink")//클래스 선택자
+
+            //html의 속성처리  ->attr(속성, 속성값) -> 속성명과 속성값이 존제 할떄
+            $("img").attr("src", "../img/3.PNG")
+            $(".c1").attr("value", '홍길동');
+
+            //html 속성처리 -> 속성명은 존재하나 속성값이 없는 속성들
+            $("#username").prop("readonly",true);
+            $("#hobby").prop("checked", true);
+
+            console.log( $("#hobby").prop('checked'));
+            console.log( $('#username').attr('value'));
+        });
+    </script>
+</head>
+
+<body>
+    <div>jqeury 에서 스타일 적용</div>
+    <input type="text" id="username" name="username" class="c1" />
+    <input type="checkbox" id="hobby"/>
+    <h2>html 속성을 jquery 에서 제어하기gdgdgdgd</h2>
+    <img src../img/1.PNG />
+</body>
+
+</html>

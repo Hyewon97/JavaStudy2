@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>TEST</title>
+ <Script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></Script>
+ <script>
+    $(function(){
+            //text, html - innerHTML
+            var tag="<img src='../img/1.PNG'/>"
+
+            //document.getElementByid("result").innerHTML = tag;
+            $('#result').html(tag);
+            console.log($("#result").html());
+
+            $("#result").text(tag);
+            console.log($('#daum1').text());
+
+            //$("h2>a")
+            $("h2").children('a').attr('href', 'https://www.nate.com');
+            $("h2>a").attr("target", "_black");
+
+            //속성값 지우기
+            //$("h2").children('a').attr('href',"");
+            $('a').removeAttr('href');
+    });
+ </script>
+</head>
+<body>
+    <h1 id="daume1">객체 조작1</h1>
+    <h2><a href="#">객체 조작 2</a></h2>
+    <div id="result"></div>
+</body>
+</html>
