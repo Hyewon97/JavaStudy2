@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <Script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></Script>
+    <style>
+        #movieList{width:820px; height:114px; border:1px solid gray; margin:0 auto}
+    </style>
+    <Script>
+        $(function(){
+            for(var i=1; i<=20; i++){
+                var tag = "<a href='#'><img src='img2/movie";
+                    if(i<10){
+                        tag +="0"+i;
+                    }else{
+                        tag+=+i;
+                    }
+                    tag+=".png'/></a>";
+                    $("#movieList").append(tag);
+            }
+            setInterval('movieMove()', 500);
+        });
+        function movieMove(){
+            //포스트 제일 앞에 있는 것을 제일 뒤로 보내기
+            // $(내용).appendTo(선택자)
+            $("#movieList>a").first().appendTo('#movieList');
+        }
+    </Script>
+</head>
+<body>
+    <div id="movieList"></div>
+</body>
+</html>

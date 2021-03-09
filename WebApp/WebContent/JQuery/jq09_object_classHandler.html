@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오브젝트핸들러</title>
+    <Script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></Script>
+    <style>
+        .c0{width:200px; height:100px;}
+        .c1{border:2px solid red;}
+        .c2{border:2px dotted green;}
+        .c3{border:2px dashed blue;}
+        .c4{border:2px double yellow;}
+    </style>
+    <script>
+        $(function(){
+            //jQuery에서 스타일시트 클래스 조작하는 함수
+            //addClass() : 객체에 클래스를 추가
+            $("img").addClass('c0');
+            $("img:first").addClass('c1');
+            $('img').eq(2).addClass('c3'); //세번째 이미지에 c3클래스 추가
+            $('img:odd').addClass('c2');//짝수번쨰에 c2클래스 추가
+
+            //removeClass() : 클래스 지우기
+            $('img:first').removeClass('c1');
+
+            //toggleClass() : 객체에 클래스가 있으면 지우고, 없으면 생성한다.
+            $("img").toggleClass("c3");
+
+            //hasClass() : 객체에 클래스가 있는지(true) 없는지(flase) 확인
+            var result = $("img:last").hasClass("c1");
+            //$("#username").attr('value', result);
+            $("#username").val(result);
+        })
+    </script>
+</head>
+<body>
+    <input type="text" name="username" id="username"/>
+    <hr/>
+    <div></div>
+    <img src="../img/1.PNG"/>
+    <img src="../img/2.PNG"/>
+    <img src="../img/3.PNG"/>
+    <img src="../img/4.PNG"/>
+</body>
+</html>
