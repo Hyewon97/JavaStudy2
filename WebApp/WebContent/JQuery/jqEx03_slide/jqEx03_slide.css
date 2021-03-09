@@ -1,0 +1,63 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style:none;
+}
+#bg{
+    width:100%;
+    z-index:2;
+}
+body>ul>li{
+    color:purple;
+    position: absolute;
+}
+#bg1{
+    position: absolute;
+    top: 250px;
+    left: 130px;
+    height: 1100px;
+    z-index:5;
+}
+img{
+    position: absolute;
+}
+
+/* 글씨 */
+#menu,#about,#work,#contact{
+    font-size: 4em;
+    top: 100px;
+    z-index: 5;
+}
+#menu{
+    left: 350px;
+}
+#about{
+    left: 650px;
+}
+#work{
+    left: 950px;
+}
+#contact{
+    left: 1250px;
+}
+/* 마우스오버시 */
+#labbel1, #labbel2, #labbel3, #labbel4{
+     height: 250px;
+     width: 230px;
+     display: none;
+     z-index : 3;
+}
+#labbel1{
+     left: 330px;
+}
+#labbel2{
+    left: 630px;
+    width: 250px;
+}
+#labbel3{
+    left: 930px;
+}
+#labbel4{
+    left: 1230px;
+    width: 330px;
+}
