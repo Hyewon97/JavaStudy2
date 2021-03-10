@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang='ko'>
+<head>
+   <meta charset='UTF-8'>
+   <title>Document</title>
+   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+   <style>
+       .container{width:800px; margin:0 auto;}
+       .container>img{
+           width:100%; border: 2px red solid;
+           margin:10px;
+       }
+   </style>
+   <script>
+      $(function(){
+          $(".container>input").click(function(){
+                var index = $(".container>input").index(this);
+                console.log("index = " + index);
+                if(index==0){//hide() : 객체를 숨긴다.
+                    //사라지는 시간 : 'slow', 'fast', 'nomal', 밀리초
+                    $("img:first").hide('fast'); //폭과 높이가 줄어듬
+                }else if(index ==1){
+                    $("img").first().show("fast");
+                }else if(index ==2){
+                    $("img").first().toggle(2000);
+                }else if(index ==3){
+                    //                                콜백함수: 실행한후에 자동으로 호출한다.
+                    $("img").first().fadeOut(1000, function(){
+                       // alert("점점 흐리게가 처리돰");
+                    });
+                    //$("img:first").fadeOut 도 가능
+                }else if(index ==4){
+                    $("img").first().fadeIn("fast");
+                }else if(index ==5){
+                    $("img:first").fadeToggle("fast");
+                }else if(index ==6){
+                    $("img:first").slideUp("fast");
+                }else if(index ==7){
+                    $("img:first").slideDown("fast");
+                }else if(index ==8){
+                    $("img:first").slideToggle("fast");
+                }
+          });
+      });
+   </script>
+</head>
+<body>
+    <div class="container">
+        <input type="button" value="hide()숨기기"/>
+        <input type="button" value="show()보여주기"/>
+        <input type="button" value="toggle()숨기기/보여주기"/>
+        <input type="button" value="fadeOut() 점점흐리게"/>
+        <input type="button" value="fadeIn() 점점진하게"/>
+        <input type="button" value="fadeToggle() 점점흐리게/점점진하게"/>
+        <input type="button" value="slideup() 블라인드"/>
+        <input type="button" value="slidedwon() 내리기"/>
+        <input type="button" value="slideToggle() 토글"/>
+        <hr/>
+        <img src="img/1.jpg">
+        <img src="img/1.PNG"/>
+    </div>
+</body>
+</html>

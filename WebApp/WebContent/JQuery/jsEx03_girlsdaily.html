@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang='ko'>
+<head>
+   <meta charset='UTF-8'>
+   <title>Document</title>
+   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+   <style>
+       body{ text-align: center;}
+       *{margin:0; padding: 0; list-style:none;}
+       #topB{
+           margin-left: 12%;
+           margin-right: 10%;
+           border:1px solid black;
+       }
+       #topB>ul>li{ 
+            float:left;
+            margin-right: 9%;
+            font-size: 2em;
+       }
+       #topB>ul>li:first-child{
+           margin-left: 13%;
+       }
+       #topB>ul>li:last-child{
+           margin-right: 13%;
+       }
+       h1{
+        padding-top: 3%;
+        padding-bottom: 3%;
+       }
+       img{
+           width:60%;
+       }
+   </style>
+   <script>
+      $(function(){
+            $('#outer').hover(function(){
+                //마우스 오버일떄 실행
+                console.log("마우스들어옴");
+            }, function(){
+                //마우스를 벗어나면 실행됨
+                console.log("마우스 나감");
+            })
+            $('#top').hover(function(){
+
+            }, function(){
+
+            })
+            $('#dress').hover(function(){
+
+            }, function(){
+
+            })
+            $('#bottom').hover(function(){
+
+            }, function(){
+
+            })
+            $('#SUMMER').hover(function(){
+
+            }, function(){
+
+            })
+      });
+   </script>
+</head>
+<body>
+    <h1>G I R L S D A I L Y</h1>
+    <div id="topB">   
+        <ul>
+            <li id="outer">OUTER</li>
+            <li id="top">TOP
+                <!-- <span>Tee</span>
+                <span>Cami</span>
+                <span>Knit</span>
+                <span>Shirt&blouse</span> -->
+            </li>
+            <li id="dress">DRESS
+                <!-- <span>All</span>
+                <span>바캉스룩</span>
+                <span>set</span> -->
+            </li>
+            <li id="bottom">BOTTOM
+                <!-- <span>레깅스</span>
+                <span>힐링투엘브</span>
+                <span>히든밴딩시리즈</span>
+                <span>스커트</span>
+                <span>팬츠</span> -->
+            </li>
+            <li id="summer">SUMMER
+                <!-- <span>HOLl스윔웨어</span>
+                <span>at 22도</span>
+                <span>바캉스룩</span> -->
+            </li>
+        </ul>
+    </div>
+    <img src="img/1.jpg"/>
+    <div>
+        <ul>
+            <li>가디건</li>
+            <li>쟈켓&점퍼</li>
+            <li>베스트</li>
+            <li>코트</li>
+            <li>세일</li>
+        </ul>
+    </div>
+</body>
+</html>
