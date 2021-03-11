@@ -35,7 +35,7 @@
         img {
             width:100%;
         }
-   </style>
+    </style>
    <script>
       $(function(){
          //메뉴만들기
@@ -48,11 +48,11 @@
         
          // 메인메뉴             outer    0
          main_menu.map(function(value, index){
-                var menuTag = "<li><a href='#'"+value+"</a></li>"
+                var menuTag = "<li><a href='#'>"+value+"</a><ul>"
 
                 //서브메뉴
                 sub_Menu[index].map(function(sub_value, sub_index){
-                        menuTag += "<li><a href='#'"+sub_value+"</a></li>"
+                        menuTag += "<li><a href='#'>"+sub_value+"</a></li>"
                 });
                 menuTag += "</ul></li>";
                 $("#menu").append(menuTag);

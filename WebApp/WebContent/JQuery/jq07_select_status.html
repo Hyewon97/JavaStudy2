@@ -10,7 +10,7 @@
          // : text -> 속성값이 text인 객체를 선택한다.
          $(":text").css("background-color", "pink");
          
-         //:checked ->
+         //:checked -> checked를 가진 객체를 falser로 바꾼다. true로주면 당연히 가능하겠지?!
          $(":checked").attr("checked", false);
 
          //selectedIndex -> 선택된 목록의 index
@@ -23,6 +23,7 @@
 
          //contains() : 특정 문자열이 포함된 경우 선택
          $("p:contains('네이버')").css('background-color','pink');
+         $("p").contains('다음').css('background-color','blue');
 
          //has() : 하위에 특정 태그가 포함되면 선택
          $("p:has('b')").css('color', 'red');

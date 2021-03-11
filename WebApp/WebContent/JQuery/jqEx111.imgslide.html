@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang='ko'>
+<head>
+   <meta charset='UTF-8'>
+   <title>Document</title>
+   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+   <style>
+       *{margin: 0; padding : 0; list-style-type: none;}
+       #main{
+           border: 1px solid black;
+           width: 1000px;
+           height: 600px;
+           overflow: hidden;
+           position: relative;
+       }
+       #main ul{
+           width:6000px;
+           position: absolute;
+           top:50px;
+           left:0;
+       }
+       #main ul li{
+           float:left
+       }
+       #main>ul li img{
+           width: 1000px;
+           height: 500px;
+       }
+   </style>
+   <script>
+      $(function(){
+        $("#imgslider").animate({left: "1000px"}, 5000);
+      });
+   </script>
+</head>
+<body>
+    <div id="main">
+        <div><h1>이미지 슬라이드</h1></div>
+        <ul id="imgslider">
+            <li><img src="img3/1.jpg"></li>
+            <li><img src="img3/2.jpg"></li>
+            <li><img src="img3/3.jpg"></li>
+            <li><img src="img3/4.jpg"></li>
+            <li><img src="img3/5.jpg"></li>
+            <li><img src="img3/6.jpg"></li>
+        </ul>
+    </div>
+</body>
+</html>
+
+<!-- 
+    1. float줘서 한개만나오게했고
+    2. 버튼넣어서 123456설정해야하고
+    3/ 사진안에 글씨 넣어야하고
+    4. 버튼이벤트 설정
+    5/ 자동으로 넘어가게도 설정해야함
+ -->

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang='ko'>
+<head>
+   <meta charset='UTF-8'>
+   <title>Document</title>
+   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+   <script src="jquery.innerfade.js"></script>
+   <style>
+       ul,li{
+           margin:0; padding:0; list-style-type:none;
+       }
+       #innerImg{
+           width: 500px;
+       }
+       #innerImg{
+           width:500px; height:350px;
+       }
+   </style>
+   <script>
+      $(function(){
+         $("#inner").innerfade({
+             animationType: 'slide' //slide, fade(기본)
+             ,speed: 500//'slow','fast','normaol', 밀리초
+             ,timeout: 500 //쇼대기시간
+             ,type: 'random'//'random', 'sequence', random_start
+         });
+      });
+   </script>
+</head>
+<body>
+    <div id="innerImg">
+        <ul id="inner">
+            <li><a href="https://www.naver.com"><img src="../img3/1.jpg"/></a></li>
+            <li><a href="https://www.nate.com"><img src="../img3/2.jpg"/></a></li>
+            <li><a href="https://www.daum.net"><img src="../img3/3.jpg"/></a></li>
+            <li><a href="#"><img src="../img3/4.jpg"/></a></li>
+            <li><a href="#"><img src="../img3/5.jpg"/></a></li>
+            <li><a href="#"><img src="../img3/6.jpg"/></a></li>
+        </ul>
+    </div>
+    <div id="innerText">
+        <ul id="txt">
+            <li>모든 파일이 각 웹 사이트에 로컬로 업로드되는 php 및 javascript로 웹 앱을 만들었습니다. ckeditor 폴더는 응용 프로그램 폴더 내의 하위 폴더였습니다. 내 양식에서 ckeditor가 올바르게 작동했습니다.</li>
+            <li>모든 파일이 각 웹 사이트에 로컬로 업로드되는 php 및 javascript로 웹 앱을 만들었습니다. ckeditor 폴더는 응용 프로그램 폴더 내의 하위 폴더였습니다. 내 양식에서 ckeditor가 올바르게 작동했습니다.</li>
+            <li>모든 파일이 각 웹 사이트에 로컬로 업로드되는 php 및 javascript로 웹 앱을 만들었습니다. ckeditor 폴더는 응용 프로그램 폴더 내의 하위 폴더였습니다. 내 양식에서 ckeditor가 올바르게 작동했습니다.</li>
+            <li>모든 파일이 각 웹 사이트에 로컬로 업로드되는 php 및 javascript로 웹 앱을 만들었습니다. ckeditor 폴더는 응용 프로그램 폴더 내의 하위 폴더였습니다. 내 양식에서 ckeditor가 올바르게 작동했습니다.</li>
+            <li>모든 파일이 각 웹 사이트에 로컬로 업로드되는 php 및 javascript로 웹 앱을 만들었습니다. ckeditor 폴더는 응용 프로그램 폴더 내의 하위 폴더였습니다. 내 양식에서 ckeditor가 올바르게 작동했습니다.</li>
+            <li>모든 파일이 각 웹 사이트에 로컬로 업로드되는 php 및 javascript로 웹 앱을 만들었습니다. ckeditor 폴더는 응용 프로그램 폴더 내의 하위 폴더였습니다. 내 양식에서 ckeditor가 올바르게 작동했습니다.</li>
+        </ul>
+    </div>
+</body>
+</html>

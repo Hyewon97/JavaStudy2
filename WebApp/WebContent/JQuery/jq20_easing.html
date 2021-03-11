@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang='ko'>
+<head>
+   <meta charset='UTF-8'>
+   <title>Document</title>
+   <link rel="stylesheet" href="lib/jquery-ui.min.css" type="text/css"/>
+   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+   <script src="lib/jquery-ui.min.js"></script>
+   <!-- 
+       https://jqueryui.com/easing/
+
+       제이쿼리 걸어주는 순거
+       1.jquery-ui.min.css
+       2.jquery
+       3.jquery-ui.min.js
+    -->
+    <style>
+        img{width:100px; height: 100px; position: absolute;}
+    </style>
+   <script>
+      $(function(){
+         $("img").animate({marginLeft: "1500px"}, 500, 'easeOutBounce', function(){});
+      });
+   </script>
+</head>
+<body>
+    <img src="img/1.jpg"/>
+</body>
+</html>
