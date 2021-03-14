@@ -22,7 +22,43 @@
     #thursDayMain>ul>li>a>span{
         text-align: right;
     }
+    #jump>li{
+        margin-left: 10px;
+
+    }
+    #some{
+        margin-left: 10px;
+    }
+    #popularity{
+        padding-left: 280px;
+    }
+    #thursDayMain{      
+        padding-top: 30px;
+    }
+    hr{
+        overflow:auto;
+        width: 700px;
+    }
+    #contents>li>div{
+        float:left;
+    }
+    #contents{     
+        padding-top: 30px;
+        overflow:auto;
+        width:800px;
+    }
+    #contents>li{
+        float:left;
+        margin-bottom: 20px;
+    }
+    #webname{
+        overflow:auto;
+    }
+    #contents>li:not(:nth-child(3n+1)){
+        margin-left: 50px;
+    }
 </Style>
+
 </head>
 <body>
     <!-- 목요추천웹툰 상단바 -->
@@ -31,7 +67,7 @@
         <ul>
             <li>
                 <div>
-                    <a onclick="#" herf="#" ><img src="img/m2.png"/></a>
+                    <a herf="#" ><img src="img/m2.png"/></a>
                 </div>
                 <dt>
                     <a href = "#">
@@ -39,18 +75,18 @@
                     </a>
                 </dt>
                 <dt>
-                    <a onclick="#" href="#" title="22. 성격 까칠한 새 친구">22. 성격 까칠한 새 친구</a>
+                    <a href="#" title="22. 성격 까칠한 새 친구">22. 성격 까칠한 새 친구</a>
                 </dt>
                 <dt>
-                    <a href=# onclick="#" title="강호진">강호진</a>
+                    <a href="#" title="강호진">강호진</a>
                 </dt>
-                <dt>
-                    ★★★★★ 9.88
+                <dt style="color : red">
+                    ★★★★★ <span style="color: black;">9.88</span>
                 </dt>
             </li>
             <li>
                 <div>
-                    <a onclick="#" herf="#"><img src="img/m3.png"/></a>
+                    <a herf="#"><img src="img/m3.png"/></a>
                 </div>
                 <dt>
                     <a href = "#">
@@ -58,18 +94,18 @@
                     </a>
                 </dt>
                 <dt>
-                    <a onclick="#" href="#" title="62화">62화</a>                   
+                    <a href="#" title="62화">62화</a>                   
                 </dt>
                 <dt>
-                <a href=# onclick="#" title="고태호">고태호</a>
+                <a href=# title="고태호">고태호</a>
                 </dt>
-                <dt>
-                    ★★★★★ 9.98
+                <dt style="color : red">
+                    ★★★★★ <span style="color : black">9.98</span>
                 </dt>
             </li>
             <li>
                 <div>
-                    <a onclick="#" herf="#"><img src="img/m1.png"/></a>
+                    <a herf="#"><img src="img/m1.png"/></a>
                 </div>
                 <dt>
                     <a href = "#">
@@ -77,13 +113,13 @@
                     </a>
                 </dt>
                 <dt>
-                    <a onclick="#" href="#" title="5화">5화</a>
+                    <a href="#" title="5화">5화</a>
                 </dt>
                 <dt>
-                    <a href=# onclick="#" title="화영/용끄">화영/용끄</a>
+                    <a href="#" title="화영/용끄">화영/용끄</a>
                 </dt>
-                <dt>
-                    ★★★★★ 9.92
+                <dt style="color : red">
+                    ★★★★★ <span style="color : black">9.92</span>
                 </dt>
             </li>
         </ul>
@@ -92,16 +128,491 @@
         <!-- 클릭시 이벤트생성해야함 -->
         <ul>
             <li>목요 전체 웹툰</li>
-            <li><a onclick="#" href="#"><span>인기순</span></a></li>
-            <li><a onclick="#" href="#"><span>업데이트순</span></a></li>
-            <li><a onclick="#" href="#"><span>조회순</span></a></li>
-            <li><a onclick="#" href="#"><span>별점순</span></a></li>
         </ul>
         <!-- 썸네일형 리스트형 자바스크립트 써야함-->
-        <ul>
-            <li><a href="#"><img src="#" width="19" height="19" title="썸네일형"></a></li>
-            <li><a href="#"><img src="#" width="19" height="19" title="리스트형"></a></li>
+        <ul id="jump">
+            <li><a href="#"><span id="popularity">인기순</span></a></li>
+            <li><a href="#"><span>업데이트순</span></a></li>
+            <li><a href="#"><span>조회순</span></a></li>
+            <li><a href="#"><span>별점순</span></a></li>
         </ul>
+        <ul>
+            <li id="some"><a href="#"><img src="img/1.PNG" width="19" height="19" title="썸네일형"></a></li>
+            <li><a href="Thursdayscript.html"><img src="img/2.PNG" width="19" height="19" title="리스트형"></a></li>
+        </ul>
+    </div>
+    <br><br>
+    <hr/>
+    <div id="contents">
+        <li>
+            <div>
+                <img src="https://shared-comic.pstatic.net/thumb/webtoon/748105/thumbnail/thumbnail_IMAG10_becd3e24-cc09-4243-a1c9-646270f4a8db.jpg" width="83" height="90" title="독립일기" alt="독립일기">
+            </div>
+            <dl id="webname">
+                <dt><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu" title="독립일기">독립일기</a></dt>
+                <dd>
+                    <a href="#">자까</a>
+                </dd>
+                <dd>
+                    <div>
+                        <span style="width:99.75%; color:red">★★★★★</span>
+                        <strong>9.97</strong>
+                    </div>
+                </dd>
+                <dd class="more"><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu">전체보기</a></dd>
+                </dl>
+        </li>
+        <li>
+            <div>
+                <img src="https://shared-comic.pstatic.net/thumb/webtoon/748105/thumbnail/thumbnail_IMAG10_becd3e24-cc09-4243-a1c9-646270f4a8db.jpg" width="83" height="90" title="독립일기" alt="독립일기">
+            </div>
+            <dl id="webname">
+                <dt><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu" title="독립일기">독립일기</a></dt>
+                <dd>
+                    <a href="#">자까</a>
+                </dd>
+                <dd>
+                    <div>
+                        <span style="width:99.75%; color:red">★★★★★</span>
+                        <strong>9.97</strong>
+                    </div>
+                </dd>
+                <dd class="more"><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu">전체보기</a></dd>
+                </dl>
+        </li>
+        <li>
+            <div>
+                <img src="https://shared-comic.pstatic.net/thumb/webtoon/748105/thumbnail/thumbnail_IMAG10_becd3e24-cc09-4243-a1c9-646270f4a8db.jpg" width="83" height="90" title="독립일기" alt="독립일기">
+            </div>
+            <dl id="webname">
+                <dt><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu" title="독립일기">독립일기</a></dt>
+                <dd>
+                    <a href="#">자까</a>
+                </dd>
+                <dd>
+                    <div>
+                        <span style="width:99.75%; color:red">★★★★★</span>
+                        <strong>9.97</strong>
+                    </div>
+                </dd>
+                <dd class="more"><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu">전체보기</a></dd>
+                </dl>
+        </li>
+        <li>
+            <div>
+                <img src="https://shared-comic.pstatic.net/thumb/webtoon/748105/thumbnail/thumbnail_IMAG10_becd3e24-cc09-4243-a1c9-646270f4a8db.jpg" width="83" height="90" title="독립일기" alt="독립일기">
+            </div>
+            <dl id="webname">
+                <dt><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu" title="독립일기">독립일기</a></dt>
+                <dd>
+                    <a href="#">자까</a>
+                </dd>
+                <dd>
+                    <div>
+                        <span style="width:99.75%; color:red">★★★★★</span>
+                        <strong>9.97</strong>
+                    </div>
+                </dd>
+                <dd class="more"><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu">전체보기</a></dd>
+                </dl>
+        </li>
+        <li>
+            <div>
+                <img src="https://shared-comic.pstatic.net/thumb/webtoon/748105/thumbnail/thumbnail_IMAG10_becd3e24-cc09-4243-a1c9-646270f4a8db.jpg" width="83" height="90" title="독립일기" alt="독립일기">
+            </div>
+            <dl id="webname">
+                <dt><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu" title="독립일기">독립일기</a></dt>
+                <dd>
+                    <a href="#">자까</a>
+                </dd>
+                <dd>
+                    <div>
+                        <span style="width:99.75%; color:red">★★★★★</span>
+                        <strong>9.97</strong>
+                    </div>
+                </dd>
+                <dd class="more"><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu">전체보기</a></dd>
+                </dl>
+        </li>
+        <li>
+            <div>
+                <img src="https://shared-comic.pstatic.net/thumb/webtoon/748105/thumbnail/thumbnail_IMAG10_becd3e24-cc09-4243-a1c9-646270f4a8db.jpg" width="83" height="90" title="독립일기" alt="독립일기">
+            </div>
+            <dl id="webname">
+                <dt><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu" title="독립일기">독립일기</a></dt>
+                <dd>
+                    <a href="#">자까</a>
+                </dd>
+                <dd>
+                    <div>
+                        <span style="width:99.75%; color:red">★★★★★</span>
+                        <strong>9.97</strong>
+                    </div>
+                </dd>
+                <dd class="more"><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu">전체보기</a></dd>
+                </dl>
+        </li>
+        <li>
+            <div>
+                <img src="https://shared-comic.pstatic.net/thumb/webtoon/748105/thumbnail/thumbnail_IMAG10_becd3e24-cc09-4243-a1c9-646270f4a8db.jpg" width="83" height="90" title="독립일기" alt="독립일기">
+            </div>
+            <dl id="webname">
+                <dt><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu" title="독립일기">독립일기</a></dt>
+                <dd>
+                    <a href="#">자까</a>
+                </dd>
+                <dd>
+                    <div>
+                        <span style="width:99.75%; color:red">★★★★★</span>
+                        <strong>9.97</strong>
+                    </div>
+                </dd>
+                <dd class="more"><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu">전체보기</a></dd>
+                </dl>
+        </li>
+        <li>
+            <div>
+                <img src="https://shared-comic.pstatic.net/thumb/webtoon/748105/thumbnail/thumbnail_IMAG10_becd3e24-cc09-4243-a1c9-646270f4a8db.jpg" width="83" height="90" title="독립일기" alt="독립일기">
+            </div>
+            <dl id="webname">
+                <dt><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu" title="독립일기">독립일기</a></dt>
+                <dd>
+                    <a href="#">자까</a>
+                </dd>
+                <dd>
+                    <div>
+                        <span style="width:99.75%; color:red">★★★★★</span>
+                        <strong>9.97</strong>
+                    </div>
+                </dd>
+                <dd class="more"><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu">전체보기</a></dd>
+                </dl>
+        </li>
+        <li>
+            <div>
+                <img src="https://shared-comic.pstatic.net/thumb/webtoon/748105/thumbnail/thumbnail_IMAG10_becd3e24-cc09-4243-a1c9-646270f4a8db.jpg" width="83" height="90" title="독립일기" alt="독립일기">
+            </div>
+            <dl id="webname">
+                <dt><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu" title="독립일기">독립일기</a></dt>
+                <dd>
+                    <a href="#">자까</a>
+                </dd>
+                <dd>
+                    <div>
+                        <span style="width:99.75%; color:red">★★★★★</span>
+                        <strong>9.97</strong>
+                    </div>
+                </dd>
+                <dd class="more"><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu">전체보기</a></dd>
+                </dl>
+        </li>
+        <li>
+            <div>
+                <img src="https://shared-comic.pstatic.net/thumb/webtoon/748105/thumbnail/thumbnail_IMAG10_becd3e24-cc09-4243-a1c9-646270f4a8db.jpg" width="83" height="90" title="독립일기" alt="독립일기">
+            </div>
+            <dl id="webname">
+                <dt><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu" title="독립일기">독립일기</a></dt>
+                <dd>
+                    <a href="#">자까</a>
+                </dd>
+                <dd>
+                    <div>
+                        <span style="width:99.75%; color:red">★★★★★</span>
+                        <strong>9.97</strong>
+                    </div>
+                </dd>
+                <dd class="more"><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu">전체보기</a></dd>
+                </dl>
+        </li>
+        <li>
+            <div>
+                <img src="https://shared-comic.pstatic.net/thumb/webtoon/748105/thumbnail/thumbnail_IMAG10_becd3e24-cc09-4243-a1c9-646270f4a8db.jpg" width="83" height="90" title="독립일기" alt="독립일기">
+            </div>
+            <dl id="webname">
+                <dt><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu" title="독립일기">독립일기</a></dt>
+                <dd>
+                    <a href="#">자까</a>
+                </dd>
+                <dd>
+                    <div>
+                        <span style="width:99.75%; color:red">★★★★★</span>
+                        <strong>9.97</strong>
+                    </div>
+                </dd>
+                <dd class="more"><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu">전체보기</a></dd>
+                </dl>
+        </li>
+        <li>
+            <div>
+                <img src="https://shared-comic.pstatic.net/thumb/webtoon/748105/thumbnail/thumbnail_IMAG10_becd3e24-cc09-4243-a1c9-646270f4a8db.jpg" width="83" height="90" title="독립일기" alt="독립일기">
+            </div>
+            <dl id="webname">
+                <dt><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu" title="독립일기">독립일기</a></dt>
+                <dd>
+                    <a href="#">자까</a>
+                </dd>
+                <dd>
+                    <div>
+                        <span style="width:99.75%; color:red">★★★★★</span>
+                        <strong>9.97</strong>
+                    </div>
+                </dd>
+                <dd class="more"><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu">전체보기</a></dd>
+                </dl>
+        </li>
+        <li>
+            <div>
+                <img src="https://shared-comic.pstatic.net/thumb/webtoon/748105/thumbnail/thumbnail_IMAG10_becd3e24-cc09-4243-a1c9-646270f4a8db.jpg" width="83" height="90" title="독립일기" alt="독립일기">
+            </div>
+            <dl id="webname">
+                <dt><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu" title="독립일기">독립일기</a></dt>
+                <dd>
+                    <a href="#">자까</a>
+                </dd>
+                <dd>
+                    <div>
+                        <span style="width:99.75%; color:red">★★★★★</span>
+                        <strong>9.97</strong>
+                    </div>
+                </dd>
+                <dd class="more"><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu">전체보기</a></dd>
+                </dl>
+        </li>
+        <li>
+            <div>
+                <img src="https://shared-comic.pstatic.net/thumb/webtoon/748105/thumbnail/thumbnail_IMAG10_becd3e24-cc09-4243-a1c9-646270f4a8db.jpg" width="83" height="90" title="독립일기" alt="독립일기">
+            </div>
+            <dl id="webname">
+                <dt><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu" title="독립일기">독립일기</a></dt>
+                <dd>
+                    <a href="#">자까</a>
+                </dd>
+                <dd>
+                    <div>
+                        <span style="width:99.75%; color:red">★★★★★</span>
+                        <strong>9.97</strong>
+                    </div>
+                </dd>
+                <dd class="more"><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu">전체보기</a></dd>
+                </dl>
+        </li>
+        <li>
+            <div>
+                <img src="https://shared-comic.pstatic.net/thumb/webtoon/748105/thumbnail/thumbnail_IMAG10_becd3e24-cc09-4243-a1c9-646270f4a8db.jpg" width="83" height="90" title="독립일기" alt="독립일기">
+            </div>
+            <dl id="webname">
+                <dt><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu" title="독립일기">독립일기</a></dt>
+                <dd>
+                    <a href="#">자까</a>
+                </dd>
+                <dd>
+                    <div>
+                        <span style="width:99.75%; color:red">★★★★★</span>
+                        <strong>9.97</strong>
+                    </div>
+                </dd>
+                <dd class="more"><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu">전체보기</a></dd>
+                </dl>
+        </li>
+        <li>
+            <div>
+                <img src="https://shared-comic.pstatic.net/thumb/webtoon/748105/thumbnail/thumbnail_IMAG10_becd3e24-cc09-4243-a1c9-646270f4a8db.jpg" width="83" height="90" title="독립일기" alt="독립일기">
+            </div>
+            <dl id="webname">
+                <dt><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu" title="독립일기">독립일기</a></dt>
+                <dd>
+                    <a href="#">자까</a>
+                </dd>
+                <dd>
+                    <div>
+                        <span style="width:99.75%; color:red">★★★★★</span>
+                        <strong>9.97</strong>
+                    </div>
+                </dd>
+                <dd class="more"><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu">전체보기</a></dd>
+                </dl>
+        </li>
+        <li>
+            <div>
+                <img src="https://shared-comic.pstatic.net/thumb/webtoon/748105/thumbnail/thumbnail_IMAG10_becd3e24-cc09-4243-a1c9-646270f4a8db.jpg" width="83" height="90" title="독립일기" alt="독립일기">
+            </div>
+            <dl id="webname">
+                <dt><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu" title="독립일기">독립일기</a></dt>
+                <dd>
+                    <a href="#">자까</a>
+                </dd>
+                <dd>
+                    <div>
+                        <span style="width:99.75%; color:red">★★★★★</span>
+                        <strong>9.97</strong>
+                    </div>
+                </dd>
+                <dd class="more"><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu">전체보기</a></dd>
+                </dl>
+        </li>
+        <li>
+            <div>
+                <img src="https://shared-comic.pstatic.net/thumb/webtoon/748105/thumbnail/thumbnail_IMAG10_becd3e24-cc09-4243-a1c9-646270f4a8db.jpg" width="83" height="90" title="독립일기" alt="독립일기">
+            </div>
+            <dl id="webname">
+                <dt><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu" title="독립일기">독립일기</a></dt>
+                <dd>
+                    <a href="#">자까</a>
+                </dd>
+                <dd>
+                    <div>
+                        <span style="width:99.75%; color:red">★★★★★</span>
+                        <strong>9.97</strong>
+                    </div>
+                </dd>
+                <dd class="more"><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu">전체보기</a></dd>
+                </dl>
+        </li>
+        <li>
+            <div>
+                <img src="https://shared-comic.pstatic.net/thumb/webtoon/748105/thumbnail/thumbnail_IMAG10_becd3e24-cc09-4243-a1c9-646270f4a8db.jpg" width="83" height="90" title="독립일기" alt="독립일기">
+            </div>
+            <dl id="webname">
+                <dt><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu" title="독립일기">독립일기</a></dt>
+                <dd>
+                    <a href="#">자까</a>
+                </dd>
+                <dd>
+                    <div>
+                        <span style="width:99.75%; color:red">★★★★★</span>
+                        <strong>9.97</strong>
+                    </div>
+                </dd>
+                <dd class="more"><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu">전체보기</a></dd>
+                </dl>
+        </li>
+        <li>
+            <div>
+                <img src="https://shared-comic.pstatic.net/thumb/webtoon/748105/thumbnail/thumbnail_IMAG10_becd3e24-cc09-4243-a1c9-646270f4a8db.jpg" width="83" height="90" title="독립일기" alt="독립일기">
+            </div>
+            <dl id="webname">
+                <dt><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu" title="독립일기">독립일기</a></dt>
+                <dd>
+                    <a href="#">자까</a>
+                </dd>
+                <dd>
+                    <div>
+                        <span style="width:99.75%; color:red">★★★★★</span>
+                        <strong>9.97</strong>
+                    </div>
+                </dd>
+                <dd class="more"><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu">전체보기</a></dd>
+                </dl>
+        </li>
+        <li>
+            <div>
+                <img src="https://shared-comic.pstatic.net/thumb/webtoon/748105/thumbnail/thumbnail_IMAG10_becd3e24-cc09-4243-a1c9-646270f4a8db.jpg" width="83" height="90" title="독립일기" alt="독립일기">
+            </div>
+            <dl id="webname">
+                <dt><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu" title="독립일기">독립일기</a></dt>
+                <dd>
+                    <a href="#">자까</a>
+                </dd>
+                <dd>
+                    <div>
+                        <span style="width:99.75%; color:red">★★★★★</span>
+                        <strong>9.97</strong>
+                    </div>
+                </dd>
+                <dd class="more"><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu">전체보기</a></dd>
+                </dl>
+        </li>
+        <li>
+            <div>
+                <img src="https://shared-comic.pstatic.net/thumb/webtoon/748105/thumbnail/thumbnail_IMAG10_becd3e24-cc09-4243-a1c9-646270f4a8db.jpg" width="83" height="90" title="독립일기" alt="독립일기">
+            </div>
+            <dl id="webname">
+                <dt><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu" title="독립일기">독립일기</a></dt>
+                <dd>
+                    <a href="#">자까</a>
+                </dd>
+                <dd>
+                    <div>
+                        <span style="width:99.75%; color:red">★★★★★</span>
+                        <strong>9.97</strong>
+                    </div>
+                </dd>
+                <dd class="more"><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu">전체보기</a></dd>
+                </dl>
+        </li>
+        <li>
+            <div>
+                <img src="https://shared-comic.pstatic.net/thumb/webtoon/748105/thumbnail/thumbnail_IMAG10_becd3e24-cc09-4243-a1c9-646270f4a8db.jpg" width="83" height="90" title="독립일기" alt="독립일기">
+            </div>
+            <dl id="webname">
+                <dt><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu" title="독립일기">독립일기</a></dt>
+                <dd>
+                    <a href="#">자까</a>
+                </dd>
+                <dd>
+                    <div>
+                        <span style="width:99.75%; color:red">★★★★★</span>
+                        <strong>9.97</strong>
+                    </div>
+                </dd>
+                <dd class="more"><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu">전체보기</a></dd>
+                </dl>
+        </li>
+        <li>
+            <div>
+                <img src="https://shared-comic.pstatic.net/thumb/webtoon/748105/thumbnail/thumbnail_IMAG10_becd3e24-cc09-4243-a1c9-646270f4a8db.jpg" width="83" height="90" title="독립일기" alt="독립일기">
+            </div>
+            <dl id="webname">
+                <dt><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu" title="독립일기">독립일기</a></dt>
+                <dd>
+                    <a href="#">자까</a>
+                </dd>
+                <dd>
+                    <div>
+                        <span style="width:99.75%; color:red">★★★★★</span>
+                        <strong>9.97</strong>
+                    </div>
+                </dd>
+                <dd class="more"><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu">전체보기</a></dd>
+                </dl>
+        </li>
+        <li>
+            <div>
+                <img src="https://shared-comic.pstatic.net/thumb/webtoon/748105/thumbnail/thumbnail_IMAG10_becd3e24-cc09-4243-a1c9-646270f4a8db.jpg" width="83" height="90" title="독립일기" alt="독립일기">
+            </div>
+            <dl id="webname">
+                <dt><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu" title="독립일기">독립일기</a></dt>
+                <dd>
+                    <a href="#">자까</a>
+                </dd>
+                <dd>
+                    <div>
+                        <span style="width:99.75%; color:red">★★★★★</span>
+                        <strong>9.97</strong>
+                    </div>
+                </dd>
+                <dd class="more"><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu">전체보기</a></dd>
+                </dl>
+        </li>
+        <li>
+            <div>
+                <img src="https://shared-comic.pstatic.net/thumb/webtoon/748105/thumbnail/thumbnail_IMAG10_becd3e24-cc09-4243-a1c9-646270f4a8db.jpg" width="83" height="90" title="독립일기" alt="독립일기">
+            </div>
+            <dl id="webname">
+                <dt><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu" title="독립일기">독립일기</a></dt>
+                <dd>
+                    <a href="#">자까</a>
+                </dd>
+                <dd>
+                    <div>
+                        <span style="width:99.75%; color:red">★★★★★</span>
+                        <strong>9.97</strong>
+                    </div>
+                </dd>
+                <dd class="more"><a href="https://comic.naver.com/webtoon/list.nhn?titleId=748105&weekday=thu">전체보기</a></dd>
+                </dl>
+        </li>
+        
     </div>
 </body>
 </html>
