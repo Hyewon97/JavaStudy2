@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang='ko'>
+<head>
+   <meta charset='UTF-8'>
+   <title>Document</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+   <link rel='stylesheet' href='lib/bootstrap.css' type='text/css'/>
+   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+   <script src='lib/bootstrap.js'></script>
+   <script>
+       $(function(){
+           //툴팁 기능이 적용되기 위해서는 tooltip() 함수를 호출하여야한다.
+           $('[data-toggle=tooltip]').tooltip();
+
+           //팝오버도 적용하기 위해서는 popover 함수를 호출해야한다.
+           $('[data-toggle=popover]').popover();
+       });
+   </script>
+</head>
+<body>
+    <div class="container">
+        <!-- 
+            poper.min.js
+            .tooltip : 풍선도움말
+            title : 마우스 오버시 표시할 풍선도움말 내용
+            data-placement : 툴팁이 표시되는 위치(top, right, bottom, left)
+         -->
+         <div>
+             <img src="../img/1.PNG"/>
+         </div>
+         <h1 title="tooltip 풍선도움말" data-toggle="tooltip" data-placement="left">풍선 도움말 : tooltip 실행하기</h1>
+         <div title="아우디" data-toggle="tooltip" data-placement="bottom">
+             아우디아우디아우디아우디아우디아우디아우디아우디아우디아우디아우디
+         </div>
+         <!-- 
+             popover : 풍선 도움말(제목: content)
+
+             title: 팝오버의 제목
+             data-content : 팝오버의 내용
+             data-placement : 팝오버위치
+             data-toggle : popover
+             data trigger = "hover " : 마우스 오버시 팝오버 보이기
+          -->
+          <div class="list-group">
+            <a href="#" class="list-group-item" title="아우디" data-content="아우디 폭스바겐 코리아" data-placement="top" data-toggle="popover" data-trigger="hover">처분 명령 뒤에도 1년 안에 땅을 안팔면 이행강제금을 부과합니다.</a>
+            <a href="#" class="list-group-item" title="스포티" data-content="스포티한 중현세간" data-placement="bottom" data-toggle="popover" data-trigger="hover">[정세균/국무총리]"사생 결단의 각오로 철처히 수사하겠습니다. 결과에 따라 강력하게 처벌하고, 불법 범죄수익은 법령에 따라 철저하게 환수하겠습니다."</a>
+            <a href="#" class="list-group-item" title="모닝" data-content="모닝은 짱짱맨임" data-placement="left" data-toggle="popover">정부는 또 투기우려 지역 농지의 경우 지역농민, 주민, 시민사회단체가 참여하는 지역 농지위원회에서 농지 취득 심사를 하도록 농지법도 개정할 방침입니다.</a>
+            <a href="#" class="list-group-item" title="티코" data-content="티코는 옛날차임" data-placement="right" data-toggle="popover">정세균 국무총리는 이번 LH 사태는 오래된 부동산 적폐의 일부가 드러난 거라며 대한민국을 투기장으로 만든 부동산 카르텔을 척결하겠다고 밝혔습니다.</a>
+          </div>
+    </div>
+</body>
+</html>

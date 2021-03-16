@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>ajax...ㅇㅇ</title>
+    <meta name="viewport" content ="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script> 
+    <style>
+        #result{
+            width:100%; height: 500px; background-color: #ddd;
+        }
+    </style>
+    <script>
+        /*
+            ajax는 비동기식으로 서버와 통신하는 자바스크립트 라이브러라이다.
+            ajax를 이용하면 비동기식으로 서버로 데이터를 보내거나 받을 수 있다.
+         */
+
+        function loadAjax() {
+            //javascript를 이용한 ajax 구현하기
+
+            //1. ajax 객체 생성
+            var xhttp = new XMLHttpRequest(); //웹 서버에 데이터를 요청하는 객체
+            //2. ajax 이벤트 처리
+            xhttp.onreadystatechange = function(){
+                /*
+                    서버에서 정보를 가져왔을때 > 성공? 실패?
+                     - readyState : XMLHttpRequest의 처리상태를 가지고 있음 (0:초기화 실패, 1:서버와 연결은 성공, 2:요청이 접수됨, 3:처리를 요청했다, 4:요청이 완료됨)
+                     - status : 요청처리 번호를 가지고 있음
+                                (200:정상처리됨, 403:금지됨, 404:찾을 수 없다(파일이 없을 경우))
+                     - responseText : 서버에서 받아온 실행결과 값(내용)이 들어있는 변수
+                */
+                if(this.readyState===4 && this.status===200){ //정상 전송이 완료
+                    //document.getElementById("result").innerHTML = this.responseText;
+                    document.getElementById("result").value = this.responseText;
+                }
+
+            }
+            //3. ajax 객체 열기 - 서버에 요청 > 서버에서 데이터 받아오기 > 정보 변경 > onreadystatechange 실행되면서 함수식 실행!
+                    //()? 1. 전송방식(get, post) 2.가져올 파일명 3.동기식(페이지 변경:false)? 비동기식(페이지 중 일부만 변경:true)?
+            xhttp.open("GET", "CalendarEx.java", true);
+                    //() 서버에 데이터 요청 + 실제 서버에 접속
+            xhttp.send();
+
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h1> 자바 스크립트를 이용한 ajax 테스트 </h1>
+        <button onclick="loadAjax()">버튼을 클릭하면 서버에 접속해서 비동기식으로 데이터를 가져온다.</button>
+        <hr />
+        <textarea id="result">ddd</textarea>
+    </div>
+</body>
+
+</html>

@@ -3,16 +3,68 @@
 <head>
    <meta charset='UTF-8'>
    <title>imgslider</title>
-   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+   <!-- 
+   		bxslider
+   		https://github.com/stevenwanderski/bxslider-4	
+   
+   		링크순서
+   		1.jquery
+   		2.easing
+   		3. bxslider 스크립트
+   		4. bxslider에 스타일시트
+   		5. images 폴더 복사
+    -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+   <script src="jquery.easing.1.3.js"></script>
+   <script src="jquery.bxslider.js"></script>
+   <link rel="stylesheet" href="jquery.bxslider.css" type="text/css"/>
+   <style>
+   		.container{width:800px; margin:0 auto;}
+   		#slider img{width: 100%; height:350px;}
+   		ul,li{
+   			margin: 0; padding: 0;
+   		}
+   		
+   </style>
+   <script>
+   	$(function(){
+   		$("#slider").bxSlider({
+   			mode:'horizontal' // horizontal, vertical, fade
+   			, slideWidth: 800
+   			, slideHeight: 350
+   			//, speed : 1000 //default : 500
+   			, auto : true//자동시작 : true, false
+   			//, randomStart : true//시작을 랜덤으로 : true, false
+   			, captions: true //설명을 표시 : true, flase
+   			//, ticker : true // 자막처럼 움직이기, ture, false
+   			, infiniteLoop : false //반복여부 true(기본값), false
+   			//, adaptiveHeight: true //이미지 크기에 따라 높이 자동조절
+   			, hideControlOnEnd : true //컨트롤 버튼 처음과 끝을 표시할지 여부 infiniteLoop가 false일때만 가능
+   			
+   			//easing
+   			, userCss:false //easing사용여부(true: easing사용안함, false는 easing 사용함)
+   			, easing : 'easeOutElastic'
+   			
+   			, onSliderLoad : function(){ //슬라이드가 로딩이 완료되면 호출되는 함수
+   				console.log("onSlider실행됨")
+   			}
+   			, onSliderAfter : function(){// 슬라이드가 움직이고나면 호출되는 함수
+   				console.log("슬라이드가 움직임 : onSliderAfter")
+   			}
+   		});
+   	});
+   </script>
 </head>
 <body>
-    <ul id="slider">
-        <li><img src="../img3/1.jpg" title="첫번째 이미지설명"></li>
-        <li><img src="../img3/2.jpg" title="두번째 이미지설명"></li>
-        <li><img src="../img3/3.jpg" title="세번쨰 이미지설명"></li>
-        <li><img src="../img3/4.jpg" title="네번쨰 이미지설명"></li>
-        <li><img src="../img3/5.jpg" title="다섯번째 이미지설명"></li>
-        <li><img src="../img3/6.jpg" title="여섯번째 이미지설명"></li>
-    </ul>
+	<div class="container">
+	    <ul id="slider">
+	        <li><img src="../img3/1.jpg" title="첫번째 이미지설명"></li>
+	        <li><img src="../img3/2.jpg" title="두번째 이미지설명"></li>
+	        <li><img src="../img3/3.jpg" title="세번쨰 이미지설명"></li>
+	        <li><img src="../img3/4.jpg" title="네번쨰 이미지설명"></li>
+	        <li><img src="../img3/5.jpg" title="다섯번째 이미지설명"></li>
+	        <li><img src="../img3/6.jpg" title="여섯번째 이미지설명"></li>
+	    </ul>
+    </div>
 </body>
 </html>

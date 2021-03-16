@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang='ko'>
+<head>
+   <meta charset='UTF-8'>
+   <title>Document</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+   <link rel='stylesheet' href='lib/bootstrap.css' type='text/css'/>
+   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+   <script src='lib/bootstrap.js'></script>
+   <script>
+       $(function(){
+           $(".container>div:first>a").addClass("list-group-item");
+           $(".container>div:last").addClass("list-group");
+           $(".container>div:last>div").addClass("list-group-item");
+       });
+   </script>
+</head>
+<body>
+    <div class="container">
+        <!-- ul으로 목록만들기 -->
+        <ul class="list-group">
+            <li class="list-group-item">LH 직원들의 땅투기 의혹, 지금 조사와 수사가 진행되고 있습니다만, 이후의 대책이 더 중요하겠죠.</li>
+            <li class="list-group-item list-group-item-secondary">LH 직원들은 진짜 농사를 짓거나 거기서 살 게 아니면 아예 땅을 못 사게 하고, 신도시를 결정하기 전에</li>
+            <li class="list-group-item">LH 직원들이 거기에 땅을 사뒀는지부터 조사하기로 했습니다.</li>
+            <li class="list-group-item">이번에 걸린 직원들은 투기라는 게 확인되면 땅을 강제로 처분시키기로 했습니다.</li>
+        </ul>
+        <hr/>
+        <!-- a태그로 목록만들기 -->
+        <div class="list-group">
+            <a href="#">'부동산 범죄와의 전쟁'을 선포한 정부가 1차 후속 대책으로 내놓은 핵심은 LH 임직원들의 토지 매매 제한입니다.</a>
+            <a href="#">농사든 거주든, 실제 사용할 땅이 아니면 토지를 사고 팔수 없도록, LH 사규로 못박겠다는 겁니다.</a>
+            <a href="#">내부 개발 정보와 투기 방법을 공유하고 불법 투기를 자행하는 행위가 재발하지 않도록 내부 통제 방안을 전면 쇄신하겠습니다</a>
+            <a href="#">
+                <H1>부는 또 LH 임직원들의 토지를 관리하</H1>
+                <p>구를 지정하기 전에, 임직원 토지를 전수조사하겠다는 방침입니다.</p>
+            </a>
+        </div>
+        <hr/>
+        <!-- div 태그로 목록만들기 -->
+        <div>
+            <div>부는 또 투기우려 지역 농지의 경우 지역농민, 주민, 시민사회단체가 참여하는 지역 농지위</div>
+            <div>지 취득 심사를 하도록 농지법도 개정할 방침입니다.</div>
+            <div>지 취득 심사를 하도록 농지법도 개정할 방침입니다.</div>
+            <div>가 드러난 거라며 대한민국을 투기장으로 만든 부동산 카르텔을 척결하겠다고 밝혔습니다.</div>
+        </div>
+    </div>
+</body>
+</html>

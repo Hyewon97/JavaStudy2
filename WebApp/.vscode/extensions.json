@@ -1,5 +1,6 @@
 {
     "recommendations": [
-        "techer.open-in-browser"
+        "techer.open-in-browser",
+        "ms-ceintl.vscode-language-pack-ko"
     ]
 }
