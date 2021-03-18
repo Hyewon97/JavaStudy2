@@ -27,15 +27,8 @@
 </script>
 </head>
 <body>
+<%@ include file="jsp04_include/jspf_header.jspf" %>
 <h2>session.ID : <%= session.getId() %></h2>
-<%	//session 로그인 여부를 확인한후 선택하여 표시한다.
-	if(session.getAttribute("logStatus")==null){//로그인안댐
-%>
-		<a href="<%=request.getContextPath()%>/login/login_form.html">로그인</a>
-<% 	}else if(session.getAttribute("logStatus").equals("Y")){ %>
-		<%=session.getAttribute("logName") %>
-		<a href="<%=request.getContextPath()%>/login/logout.jsp">로그아웃</a>
-<% 	}%>	
 	<h1>jsp start!!!</h1>
 	<!-- jsp 영역 > java 영역이 된다. 서버에서만 실행됨 out 통한 데이터만 보냄 jsp소스는 보여지지 않는다.
 	 	jsp > tomcat이 바꿔줌 > servlet(java) : class랑 java file이 생성

@@ -10,27 +10,22 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 <style>
-	footer{background-color:#ddd; height:100px;}
-	header{height:100px; background-color:pink;}
-	
+	header{height:100px; background-color:lightblue;}
+	footer{height:100px; background-color:orange;}
 </style>
 </head>
 <body>
 	<div class="container">
-		<!-- header include -->
-		<jsp:include page="jsp_header.jsp"/>
-		<!-- 현재 컨텐츠 -->
-		<div style="border:1px solid black">
-		<%
-			//include 파일 변수 사용하기
-			//변수, 데이터
-			//out.write("이름 = " + username);
-			//out.write("번호 = " + num);
-		%>
+		<!-- header include(조각파일:jspf) -->
+		<%@ include file="jspf_header.jspf" %>
+		<!-- 메인컨텐츠 -->
+		<div>
+			<h1>조각파일 include(<%=username%>,<%=num%>)</h1>ss
 			<img src="../img/1.jpg"/>
 		</div>
-		<!-- footer include -->
-		<jsp:include page="jsp_footer.jsp"/>
+		<!-- footer include(조각파일:jspf) -->
+		<%@ include file="jspf_footer.jspf" %>
+		
 	</div>
 </body>
 </html>
