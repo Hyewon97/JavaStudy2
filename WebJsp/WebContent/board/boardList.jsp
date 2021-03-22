@@ -3,6 +3,9 @@
 <%@page import="java.util.List"%>
 <%@page import="com.bitcamp.board.BoardVO"%>
 <%@ page import="com.bitcamp.board.BoardDAO"%>
+<%
+	request.setCharacterEncoding("utf-8");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,7 +64,6 @@
 		int onePageRecode = 5; //한페이지당 출력할 레코드수
 		int onePageSize = 5; //한번에 표시할 페이지수
 		
-		System.out.println(totalRecord);
 		//현재 페이지번호
 		int nowNum=1;
 		String nowNumStr = request.getParameter("nowNum"); //null, 4
