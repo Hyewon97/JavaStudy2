@@ -57,6 +57,9 @@
 		<li><a href="jstl/jstl03_forEachTag.jsp">forEach Tag : 반복문</a></li>
 		<li><a href="jstl/jstl04_forTokensTag.jsp">forTokens Tag : 문자열 조각내기</a></li>
 		<li><a href="jstl/jstl05_urlTag.jsp">url Tag</a></li>
+		<li><a href="jstl/jstl06_chooseTag.jsp?username=홍길동2&age=15">choose태그 : if~else문 , switch문</a></li>
+		<li><a href="jstl/jstl07_redirectTag.jsp">redirectTag태그 : url주소로 보내기 </a></li>
+		<li>많이쓰는jstl문 :  if문, for문, </li>
 	</ol>
 	
 	<hr/>
