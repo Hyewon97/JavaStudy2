@@ -27,14 +27,15 @@ public class ControllerAction extends HttpServlet {
 
 	public void init(ServletConfig config) throws ServletException {
 		//properties파일명을 web.xml에서 가져오기
-		String propertiesFilename =config.getInitParameter("proConfig");
+		String propertiesFilename =config.getInitParameter("proConfig"); //web.xml에서 이름이 "proConfig"인 것을 가져오는것(getInitParamter)
 		
+		//Map계열의 컬렉션 프레임워크와 비슷하게 동작하는파일  https://codevang.tistory.com/163
 		Properties prop = new Properties(); //key:String, value:String
 		try {
-			FileInputStream fis = new FileInputStream(propertiesFilename);
+			FileInputStream fis = new FileInputStream(propertiesFilename); //urlMapping.properties에 안에있는 값을 가져와서 읽는것
 			
 			//urlMapping.properties파일의 내용을 읽어와 properties객체로 대입한다.
-			prop.load(fis);
+			prop.load(fis); //읽는 메소드
 		} catch (Exception e) {
 			System.out.println("프로퍼티 객체 생성 에러 발생 ==> " + e.getMessage());
 		}
@@ -51,6 +52,7 @@ public class ControllerAction extends HttpServlet {
 				
 				//문자열을 객체로 생성하여 Map추가
 				Class classObject = Class.forName(commandName);
+				//														 getDeclaredConstructor 메소드는 public, protected, private, default 상관없이 class 안의 모든 생성자에 접근 가능함
 				CommandService services = (CommandService) classObject.getDeclaredConstructors()[0].newInstance();
 				map.put(key, services);
 				

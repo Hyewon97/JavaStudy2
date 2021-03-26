@@ -26,7 +26,7 @@
   		<servlet-class>com.bitcamp.home.ControllerAction</servlet-class>
   		<init-param>
   			<param-name>proConfig</param-name>
-  			<param-value>C:\tool\bitWepapp\WebMVC\WebContent\WEB-INF\prop\urlMapping.properties</param-value>
+  			<param-value>C:\Users\qnrtj\git\repository3\WebMVC\WebContent\WEB-INF\prop\urlMapping.properties</param-value>
   		</init-param>
   	</servlet>
   	<servlet-mapping>

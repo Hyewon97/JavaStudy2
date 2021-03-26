@@ -16,7 +16,7 @@
 	<h1>if Tag: 조건문</h1>
 	<!-- test: 조건식 -->
 	<c:set var="n1" value="${12}"/>
-	<c:set var="n2" value="${5 }"/>
+	<c:set var="n2" value="${5}"/>
 	
 	<c:if test="${n2>n1 }">
 	 	n2가 n1보다 크다.
@@ -34,7 +34,7 @@
 	<hr/>
 	
 	이름 = ${param.name }<br/>
-	나이 = ${param.age+10 }<br/>
+	나이 = ${param.age}<br/>
 
 </body>
 </html>
