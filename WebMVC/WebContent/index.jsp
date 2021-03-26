@@ -2,5 +2,5 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 	<div class="container">
-		<img src="img/1.PNG">
+		<img src="<%=request.getContextPath()%>/img/1.PNG">
 	</div>

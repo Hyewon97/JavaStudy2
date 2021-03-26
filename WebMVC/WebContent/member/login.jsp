@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<Script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></Script>
-<link rel="stylesheet" href="login.css" type="text/css"/>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<link rel="stylesheet" href="../js_css/login.css"/>
 <script>
 	$(function(){
-		$("#logFrm").submit(function(){
+		$("form").submit(function(){
 			if($("#userid").val()==""){
 				 alert("아이디를 입력하세요");
 				 return false;
@@ -20,8 +17,6 @@
 		});
 	});
 </script>
-</head>
-<body>
 	<div id="main">
 		<!-- 로고 -->
 		<div id="top_logo">
@@ -30,7 +25,7 @@
 		<!-- 로그인폼, 배너 -->
 		<div id="login_form">
 			<div id="login">
-				<form method="post" action="">
+				<form method="post" action="<%=request.getContextPath()%>/member/loginOk.do">
 					<input type="text" class="form_input form" name="userid" id="userid" placeholder="아이디 입력"/>
 					<input type="password" class="form_input form" name="userpwd" id="userpwd" placeholder="비밀번호 입력"/>
 					<!-- <input type="button" value="로그인"/> -->
@@ -55,4 +50,3 @@
 			</div>
 		</div>
 	</div>
-</body>

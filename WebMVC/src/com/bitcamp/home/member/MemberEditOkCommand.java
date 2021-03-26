@@ -5,19 +5,19 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.bitcamp.home.CommandService;
 
-public class MemberOkCommand implements CommandService {
+public class MemberEditOkCommand implements CommandService {
 
 	@Override
 	public String pocessStart(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		// 뷰에서 정보를 서버로 가져오기
 		req.setCharacterEncoding("UTF-8");
-		MemberVO vo =new MemberVO();
-		vo.setUserid(req.getParameter("userid"));
+		
+		// 폼의 회원정보 request
+		MemberVO vo = new MemberVO();
 		vo.setUsepwd(req.getParameter("userpwd"));
-		vo.setUsername(req.getParameter("username"));
 		vo.setTel1(req.getParameter("tel1"));
 		vo.setTel2(req.getParameter("tel2"));
 		vo.setTel3(req.getParameter("tel3"));
@@ -28,14 +28,15 @@ public class MemberOkCommand implements CommandService {
 		vo.setDetailaddr(req.getParameter("detailaddr"));
 		vo.setInterest(req.getParameterValues("interest"));
 		
-		//DB에 추가
-		MemberDAO dao= MemberDAO.getInstance();
-		int cnt=dao.setNewMember(vo);//////////////////////////////////////써야함
+		HttpSession ses = req.getSession();
+		vo.setUserid((String)ses.getAttribute("userid"));
 		
-		//뷰로 내보내기
-		req.setAttribute("result", cnt);
+		//db수정
+		MemberDAO dao = MemberDAO.getInstance();
+		int result = dao.memberUpdate(vo);
 		
-		return "/member/memberResult.jsp";
+		req.setAttribute("reuslt", result);
+		return "/member/memberEditOk.jsp";
 	}
 
 }

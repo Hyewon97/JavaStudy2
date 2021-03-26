@@ -78,12 +78,13 @@
 				return false;
 			}
 			return true;
+			alert("서비밋터짐");
 		});
 	});
 </script>
 <div class="container">
 	<h1>회원가입하기</h1>
-	<form method="post" id="memId" action="member/memberFormOk.do">
+	<form method="post" id="memId" action="<%=request.getContextPath()%>/member/memberFormOk.do">
 		<ul id="regForm">
 			<li>아이디</li>
 			<li><input type="text" name="userid" id="userid" maxlength="20" value="qwer"/>
