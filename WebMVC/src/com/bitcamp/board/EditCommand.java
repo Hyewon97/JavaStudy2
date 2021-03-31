@@ -8,11 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.bitcamp.home.CommandService;
 
-public class ViewCommand implements CommandService {
+public class EditCommand implements CommandService {
 
 	@Override
 	public String pocessStart(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		// 1.데이터를 request no, pageNum, searchKey, searchWord
+		req.setCharacterEncoding("UTF-8");
+		
 		BoardVO vo = new BoardVO();
 		PageSearchVO pVO = new PageSearchVO();
 		
@@ -22,17 +23,12 @@ public class ViewCommand implements CommandService {
 		pVO.setSearchKey(req.getParameter("searchKey"));
 		pVO.setSearchWord(req.getParameter("searchWord"));
 		
-		//2. DB조회
 		BoardDAO dao = new BoardDAO();
-		dao.hitCount(vo.getNo());//조회수증가
-		dao.oneRecordSelect(vo);//해당레코드 선택
+		dao.oneRecordSelect(vo);
 		
-		//3. 필요한 데이터를 request셋팅
 		req.setAttribute("vo", vo);
-		req.setAttribute("pVO", pVO);
-		
-		
-		return "/board/boardView.jsp";
+		req.setAttribute("pVO",	pVO);
+		return "/board/boardEdit.jsp";
 	}
 
 }

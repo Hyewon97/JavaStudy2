@@ -31,7 +31,7 @@
 			<li><a href="<%=request.getContextPath()%>/member/memberEdit.do">회원정보수정</a></li>
 		</c:if>
 		<li><a href="<%=request.getContextPath()%>/board/list.do">게시판</a></li>
-		<li><a href="#">자료실</a></li>
+		<li><a href="<%=request.getContextPath()%>/data/dataList.do">자료실</a></li>
 	</ul>
 </body>
 </html>

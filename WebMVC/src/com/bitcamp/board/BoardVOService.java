@@ -26,4 +26,6 @@ public interface BoardVOService {
 	//레코드 선택 (1page)
 	public List<BoardVO> onePageRecordSelect(PageSearchVO vo);
 	
+	//글쓴이 선택
+	public String getUesrid(int no);
 }

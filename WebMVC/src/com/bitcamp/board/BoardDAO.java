@@ -109,8 +109,26 @@ public class BoardDAO extends DBCPConnection implements BoardVOService {
 
 	@Override
 	public int boardUpdate(BoardVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = 0;
+		try {
+			getConn();
+			
+			sql = "update board set subject=?, content=? where no=? and userid=?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, vo.getSubject());
+			pstmt.setString(2, vo.getContent());
+			pstmt.setInt(3, vo.getNo());
+			pstmt.setString(4, vo.getUserid());
+			
+			result = pstmt.executeUpdate();
+			
+		}catch (Exception e) {
+			System.out.println("게시판 글쓰기 수정 에러 => " + e.getMessage());
+		}finally {
+			getClose();
+		}
+		return result;
 	}
 	@Override
 	public void hitCount(int no) {
@@ -148,12 +166,6 @@ public class BoardDAO extends DBCPConnection implements BoardVOService {
 			
 			pstmt= con.prepareStatement(sql);
 			
-			System.out.println("vo.getPageNum()*vo.getOnePageRecord()2222 = "+ vo.getPageNum()*vo.getOnePageRecord());
-			System.out.println("vo.getPageNum()333 = "+ vo.getPageNum());
-			System.out.println("vo.getTotalPage()333 = "+ vo.getTotalPage());
-			System.out.println("vo.getLastPageRecord()3???? " + vo.getLastPageRecord());
-			System.out.println("vo.getOnePageRecord()3???? " + vo.getOnePageRecord());
-			
 			if(vo.getSearchWord()==null) { //검색어가 없을떄
 				pstmt.setInt(1,vo.getPageNum()*vo.getOnePageRecord()); //1*5  5
 				
@@ -182,6 +194,27 @@ public class BoardDAO extends DBCPConnection implements BoardVOService {
 			getClose();
 		}
 		return list;
+	}
+
+	@Override//글쓴이 선택하기
+	public String getUesrid(int no) {
+		String userid="";
+		try {
+			getConn();
+			sql = "select userid from board where no=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				userid = rs.getString(1);
+			}
+		}catch (Exception e) {
+			System.out.println("아이디 선택에러 => "+ e.getMessage());
+		}finally {
+			getClose();
+		}
+		return userid;
 	}
 
 }
