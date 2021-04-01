@@ -9,7 +9,32 @@
 		width:40%;
 	}
 	#dataList{overFlow:auto;}
+	.wordCut{white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
 </style>
+<script>
+	$(function(){
+		$(document).on('click', '#dataList img', function(){
+			//레코드 번호 받아오기
+			var no = $(this).parent().parent().prev().prev().prev().prev().text();
+	//			var gtNo = $(this).$("#dataList >")
+			//console.log("no? ", no);
+			var downObj  = $(this).parent().parent().next()
+			
+			var params = "no="+no;
+			$.ajax({
+				url: '/WebMVC/data/downcount.do',
+				data: params,
+				success: function(result){
+					var downarr = result.split("<hr class='down'/>");
+					downObj.text(downarr[1].trim());
+				},
+				error: function(){
+					console.log("다운횟수 카운트 에러...");
+				}
+			})
+		})
+	})
+</script>
 <div class="container">
 	<h1>자료실 리스트</h1>
 	<div>
@@ -26,18 +51,20 @@
 		<li>Down</li>
 		<li>등록일</li>
 		
-		<c:forEach var="dataVO" items="${lst}">
-			<li>122</li>
-			<li>제목2312</li>
-			<li>글쓴이는나</li>
-			<li>55</li>
+		<!-- 반복 할 구역 -->
+		<c:forEach var="dataVO" items="${lst }">
+			<li>${dataVO.no} </li>
+			<li id="liTitle" class="wordCut"><a href="<%=request.getContextPath() %>/data/dataView.do?no=${dataVO.no}">${dataVO.title }</a></li>
+			<li>${dataVO.userid }</li>
+			<li>${dataVO.hit }</li>
 			<li>
-				<img alt="" src="<%=request.getContextPath()%>/img/disk.png" title="파일명"/>
-				<img alt="" src="<%=request.getContextPath()%>/img/disk.png" title="파일명"/>
+				<a href="<%=request.getContextPath() %>/upload/${dataVO.filename1}" download><img src="<%=request.getContextPath() %>/img/disk.png" title="${dataVO.filename1 }" width="20px" height="20px"></a>
+				<c:if test="${dataVO.filename2!=null && dataVO.filename2!='' }">
+					<a href="<%=request.getContextPath() %>/upload/${dataVO.filename2}" download><img src="<%=request.getContextPath() %>/img/disk.png" title="${dataVO.filename2 }" width="20px" height="20px"></a>
+				</c:if>
 			</li>
-			<li>첨부</li>
-			<li>6666</li>
-			<li>21-03 01:01</li>
+			<li>${dataVO.downCount }</li>
+			<li>${dataVO.writedate }</li>
 		</c:forEach>
 	</ul>
 </div>

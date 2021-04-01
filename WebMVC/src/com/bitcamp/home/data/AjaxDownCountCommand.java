@@ -1,26 +1,25 @@
-package com.bitcamp.home.member;
+package com.bitcamp.home.data;
 
 import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.bitcamp.home.CommandService;
 
-public class LogoutCommand implements CommandService {
+public class AjaxDownCountCommand implements CommandService {
 
 	@Override
 	public String pocessStart(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		//로그아웃
-		HttpSession ses = req.getSession();
+		//다운로드 횟수
+		int no =Integer.parseInt(req.getParameter("no"));
 		
-		//세션지우기
-		ses.invalidate();
-//		System.out.println("세션지운후 sesid = =========== " + ses.getAttribute("userid"));
+		DataDAO dao = new DataDAO();
+		int cnt = dao.downloadCount(no);
+		req.setAttribute("cnt", cnt);
 		
-		return "/index.jsp";
+		return "/data/ajaxDownResult.jsp";
 	}
 
 }

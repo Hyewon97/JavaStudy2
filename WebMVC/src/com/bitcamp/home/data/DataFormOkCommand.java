@@ -1,5 +1,6 @@
 package com.bitcamp.home.data;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Enumeration;
 
@@ -44,16 +45,37 @@ public class DataFormOkCommand implements CommandService {
 		
 		//폼의 type='file'인 태그의 name속성의 값을 구해서 뿌려준다 fileList.nextElement() ==> 즉 변경된 파일명을 보여줌
 		Enumeration fileList = mr.getFileNames();
+		int idx=0;
 		while(fileList.hasMoreElements()) {
 			//System.out.println("fileList => " + fileList.nextElement());
 			String nameAttr = (String)fileList.nextElement();//필드명
 			//파일명 얻어오기  getOrinalFIleName메소드는 원래파일명 FilesystemName은 바뀐파일명을 구하는 메소드이다. 같으면서 좀 다른거임
 			String newFilename = mr.getFilesystemName(nameAttr);//파일명 얻어오는데,중복이 있을경우 바뀐 파일명임
 				//mr.getOriginalFileName(nameAttr); //파일명을 얻어오는데 이건 원본파일명을 불러옴
-			System.out.println("newFIlename = " + newFilename);
-		}
+			//System.out.println("newFIlename = " + newFilename);
+			////////////////////////////////////////////////////////////////////////////
+			if(newFilename != null) {
+				vo.getFilename()[idx++]=newFilename;
+			}	
+		}	
+		DataDAO dao = new DataDAO();
+		int cnt = dao.dataInsert(vo);
 		
-		return "";
+		//레코드 추가 실패시 이미 업로드 된 파이을 삭제한다.
+		if(cnt<= 0) {
+			for(String delfile: vo.getFilename()) {
+				if(delfile !=null) {
+					try {
+						File f = new File(path, delfile);
+						f.delete();
+					}catch (Exception e) {
+						System.out.println("파일삭제 에러");
+					}
+				}
+			}
+		}
+		req.setAttribute("cnt", cnt);
+		return "/data/dataFormOk.jsp";
 	}
 
 }
