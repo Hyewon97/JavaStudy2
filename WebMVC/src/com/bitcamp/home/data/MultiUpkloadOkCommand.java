@@ -32,7 +32,7 @@ public class MultiUpkloadOkCommand implements CommandService {
 			
 			//4. 폼의 필드수 만큼 fileitem을 구할수 있다.
 			List<FileItem> items= fileUpload.parseRequest(req); 
-			System.out.println("items.size() = ====== >  " + items.size());
+			System.out.println("items.size() ======= >  " + items.size());
 			
 			DataVO vo = new DataVO();
 			for(FileItem item: items) {
