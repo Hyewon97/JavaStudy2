@@ -1,18 +1,26 @@
 {
-  "name": "WebNodejs",
-  "version": "0.1.0",
-  "description": "WebNodejs",
-  "main": "hello-world-server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified! Configure in package.json\" && exit 1"
+  "name": "qnrtj",
+  "version": "1.3.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mime": "^2.4.0"
   },
-  "repository": "",
-  "keywords": [
-    "node.js",
-    "eclipse",
-    "nodeclipse"
-  ],
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qnrtjd96/kangsan2.git"
+  },
   "author": "",
-  "license": "MIT",
-  "readmeFilename": "README.md"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/qnrtjd96/kangsan2/issues"
+  },
+  "homepage": "https://github.com/qnrtjd96/kangsan2#readme"
 }
