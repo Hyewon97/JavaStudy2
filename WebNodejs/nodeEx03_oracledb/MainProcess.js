@@ -13,6 +13,7 @@ var ejs = require('ejs');
 
 //================JDBC================================
 var oracledb = require('oracledb');
+var session = require('express-session');
 
 oracledb.autoCommit = true;//자동커밋이 되도록 설정한다.
 //db연결정보 설정
@@ -43,13 +44,20 @@ app.use(bodyParser.urlencoded({extended:true}));//한글인코딩 세팅
 
 //서버에 접속시 get방식으로 접속하면 get(), post방식은 post() 메소드를 호출한다.
 app.get('/home',(req,res)=>{
-   fs.readFile(__dirname+"\\home.html","utf-8",(error,data)=>{
+   fs.readFile(__dirname+"\\home.ejs","utf-8",(error,data)=>{
       if(error){
          res.writeHead(200,{"Content-Type":"text/html; charset=utf-8"});
          res.end("File Read Error ~!!");
       }else{
-         res.writeHead(200,{"Content-Type":"text/html; charset=utf-8"});
-         res.end(data);
+    	  //로그인 여부확인
+    	  var val= session.user;//아이디,이름, logStatus
+    	  if(val){//로그인 된경우
+    		  res.writeHead(200,{"Content-Type":"text/html; charset=utf-8"});
+    	      res.end(ejs.render(data,{user:val, logStatus:'Y'}));
+    	  }else{// 로그인 안된경우
+    		  res.writeHead(200,{"Content-Type":"text/html; charset=utf-8"});
+    	      res.end(ejs.render(data,{logStatus:'N'}));
+    	  }
       }
    });
 });
@@ -80,30 +88,53 @@ app.get('/list', (req,res)=>{
 			res.end("<script>location.href='/home';</script>");
 		}else{
 			//레코드 선택시
+			var val= session.user;//아이디,이름, logStatus
 			console.log(result);
 			fs.readFile('boardList.ejs', 'utf-8', function(error, data){
 				if(error){
 					res.writeHead(200, {"Content-Type":"text/html; charset=utf-8"});
 					res.end("<script>location.href='/home';</script>");
 				}else{
-					//총 레코드 수
-					var totalRecord = result.rows.length;
-					console.log(totalRecord);
-					
-					res.writeHead(200, {"Content-Type":"text/html; charset=utf-8"});
-					//ejs페이지에서 사용할 데이터는 ejs페이지에 render하여 보낸다.
-					//					ejs소스코드
-					res.end(ejs.render(data, {
-						results : result,
-						totalrecord : totalRecord,
-						parsing:{
-							firstPage : 6,
-							lastPage : 10,
-							totalPage : 9,
-							currentPage: 7
-						}
+					if(val){
+						//총 레코드 수
+						var totalRecord = result.rows.length;
+						console.log(totalRecord);
 						
-					}));
+						res.writeHead(200, {"Content-Type":"text/html; charset=utf-8"});
+						//ejs페이지에서 사용할 데이터는 ejs페이지에 render하여 보낸다.
+						//					ejs소스코드
+						res.end(ejs.render(data, {
+							results : result,
+							totalrecord : totalRecord,
+							parsing:{
+								firstPage : 6,
+								lastPage : 10,
+								totalPage : 9,
+								currentPage: 7
+							},
+							user:val, 
+							logStatus:'Y'
+						}));
+					}else{
+						//총 레코드 수
+						var totalRecord = result.rows.length;
+						console.log(totalRecord);
+						
+						res.writeHead(200, {"Content-Type":"text/html; charset=utf-8"});
+						//ejs페이지에서 사용할 데이터는 ejs페이지에 render하여 보낸다.
+						//					ejs소스코드
+						res.end(ejs.render(data, {
+							results : result,
+							totalrecord : totalRecord,
+							parsing:{
+								firstPage : 6,
+								lastPage : 10,
+								totalPage : 9,
+								currentPage: 7
+							}, 
+							logStatus:'N'
+						}));
+					}
 				}
 				
 			});
@@ -119,13 +150,14 @@ app.get('/list', (req,res)=>{
 });
 //글쓰기 폼
 app.get("/boardWrite", (req, res)=>{
-   fs.readFile(__dirname+"\\boardWrite.html", "utf-8" , function(error, data) {
+   fs.readFile(__dirname+"\\boardWrite.ejs", "utf-8" , function(error, data) {
       if(error){
          res.writeHead(200,{"Content-Type":"text/html; charset=utf-8"});
          res.end("File Read Error ~!!");
       }else{
+    	 var val= session.user;//아이디,이름, logStatus
          res.writeHead(200,{"Content-Type":"text/html; charset=utf-8"});
-         res.end(data);
+         res.end(ejs.render(data,{user:val, logStatus:'Y'}));
       }
    })
 });
@@ -178,9 +210,182 @@ app.get('/boardView', function(req, res){
 	});
 	//3. 레코드 선택하여 ejs에다 랜더링해서 보내기
 	//CLOB 데이터 형처럼 대용량 데이터인 경우 변수(DBMS_LOB.SUBSTR()함수를 이용하여 레코드를 선택해야한다.
-	var sql2="select no, userid, subject, DBMS_LOB.SUBSTR(content, DBMS_LOB.GETLENGTH(content)), hit, writedate " + 
+	var sql2="select no, userid, subject, DBMS_LOB.SUBSTR(content, DBMS_LOB.GETLENGTH(content)) as content, hit, " +
+			" to_char(writedate, 'YYYY-MM-DD MM:MI') as writedate " + 
 	 		 " from board where no="+no;
+	//---------------------------------------
+	conn.execute(sql2, function(error, result){
+		if(error){
+			console.log("레코드 글내용보기 에러")
+		}else{
+			fs.readFile("boardView.ejs","utf-8", function(error, data){
+				if(error){
+					console.log("boardView.ejs 파일 읽기 에러뜸");
+				}else{
+					var val= session.user;//아이디,이름, logStatus
+					var val2="";
+					if(val){
+						console.log("===========boardView==========");
+						console.log(result);
+						res.writeHead(200, {"Content-Type":"text/html; charset=utf-8"});
+						res.end(ejs.render(data, {
+							records:result,
+							user:val, 
+							logStatus:'Y'
+						}));
+					}else{
+						console.log("===========boardView==========");
+						console.log(result);
+						res.writeHead(200, {"Content-Type":"text/html; charset=utf-8"});
+						res.end(ejs.render(data, {
+							records:result,
+							user:val2
+						}));
+					}
+				}
+			});
+		}
+	});
 	
+});
+
+//글내용수정 폼
+app.get('/boardEdit', (req, res)=>{
+	var no = req.param("no");
+	
+	var sql="select no, subject, DBMS_LOB.SUBSTR(content, DBMS_LOB.GETLENGTH(content)) content from board where no="+no;
+	
+	conn.execute(sql, (error, result)=>{
+		if(error){//레코드 선택에러 발생
+			res.writeHead(200, {"Content-Type":"text/html; charset=utf-8"});
+			res.end("레코드 선택에러~~~~~~~~~~");
+		}else{ //레코드 선택 성공
+			fs.readFile("boardEdit.ejs", 'utf-8', (error, data)=>{
+				if(error){
+					res.writeHead(200, {"Content-Type":"text/html; charset=utf-8"});
+					res.end("수정 폼읽기 파일 읽기 에러");
+				}else{
+					var val= session.user;//아이디,이름, logStatus
+					res.writeHead(200, {"Content-Type":"text/html; charset=utf-8"});
+					res.end(ejs.render(data, {
+						records:result,
+						user:val, 
+						logStatus:'Y'
+					}));
+				}
+			});
+		}
+	});
+});
+
+//글수정(update)
+app.post("/editOk", (req, res)=>{
+	var no = req.param("no");
+	var userid= req.param("userid");
+	var subject = req.param("subject");
+	var content = req.param("content");
+	
+	var sql ="update board set subject='"+subject+"', content='"+content+"' where no="+no+" and userid'"+userid+"'";
+	
+	conn.execute(sql, (error, result)=>{
+		console.log('result->' + result);
+		if(error){//수정실패시
+			//글수정 폼으로 이용
+			res.statusCode = 302; // 302 : url이 리다이렉트로 이동한다.
+			res.setHeader('Location','/boardEdit?no='+no);
+			res.end();
+		}else{//수정성공시
+			//글내용보기
+			res.statusCode = 302;
+			res.setHeader('Location','boardView?no='+no);
+			res.end();
+		}
+	});
+});
+
+//레코드 삭제
+app.get('/boardDel', (req,res)=>{
+	var no = req.param("no");
+	
+	var sql="delete from board where no="+no;
+	conn.execute(sql, (error, result)=>{
+		if(error){
+			res.statusCode = 302;
+			res.setHeader("Location", "/boardView?no="+no);
+			res.end();
+		}else{
+			res.statutsCode = 302;
+			res.setHeader("Location", "/list");
+			res.end();
+		}
+	});
+});
+
+app.get('/login', (req, res)=>{
+	fs.readFile("login.html", 'utf-8', (error, data)=>{
+		if(error){
+			res.writeHead(200, {"Content-Type":"text/html; charset=utf-8"});
+			res.end("로그인 폼읽기 실패...");
+		}else{
+			res.writeHead(200, {"Content-Type":"text/html; charset=utf-8"});
+			res.end(data);
+		}
+		
+	});
+});
+
+app.post('/loginOk', (req,res)=>{
+	var userid = req.param("userid");
+	var userpwd = req.param("userpwd");
+	console.log(userid, userpwd);
+	
+	//아이디 이름을 선택
+	var sql ="select userid, username from register "+
+			" where userid ='"+userid+"' and userpwd='"+userpwd+"'";
+	
+	conn.execute(sql, (error, result)=>{
+		if(result.rows.length==0){//로그인실패
+			fs.readFile("login.html",'utf-8', function(error, data){
+				res.writeHead(200, {"Content-Type":"text/html; charset=utf-8"});
+				res.end(data);
+			});
+		}else{ //로그인성공
+			console.log(result);
+			
+			//세션설정
+			session.user={
+				userid : result.rows[0][0],
+				username : result.rows[0][1],
+				logStatus : 'Y'
+			};
+			console.log("==============session================");
+			console.log(session.user);
+			
+			fs.readFile('home.ejs', 'utf-8', (error, data)=>{
+				if(error){
+					res.writeHead(200, {"Content-Type":"text/html; charset=utf-8"});
+					res.end("404 에러");
+				}else{
+					res.writeHead(200, {"Content-Type":"text/html; charset=utf-8"});
+					res.end(ejs.render(data, {user:session.user, logStatus:'Y'}));
+				}
+			});
+		}
+	})
+});
+
+//로그아웃
+app.get("/logout", function(req, res){
+	if(session.user){//로그인상태일떄
+		//세션정보 제거
+		session.user = null;
+		
+		fs.readFile('home.ejs','utf-8',function(error, data){
+			res.writeHead(200, {"Content-Type":"text/html; charset=utf-8"});
+			res.end(ejs.render(data,{logStatus:'N'}));
+		});
+		console.log(session.user);
+	}
 });
 //==================================================
 server.listen(15001, ()=>{
